@@ -1,0 +1,175 @@
+<div id="modalCrearUsuario1" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="cancelarProceso('modalCrearUsuario1')">&times;</span>
+        <h2>Creacion del Nuevo Usuario - Paso 1</h2>       
+        
+        <form id="llenarCampos1" onsubmit="return validarYpasar('llenarCampos1','modalCrearUsuario1','modalCrearUsuario2')">            
+        <div>
+
+            <div  class="casilla_fecha">
+                <label>Fecha de la creación:</label>
+                <input type="text" class= "campo-fecha" name="fecha" readonly><br><br>
+            </div>
+            <div>
+                <label>Nombres:</label>
+                <input type="text" name="nombre"><br><br>
+            </div>
+            <div>
+                <label>Apellidos:</label>
+                <input type="text" name="apellido"><br><br>
+            </div>
+            <div>
+                <label>Número de documento:</label>
+                <div class="grupo-documento">                
+                    <input type="text" id="campoDocumento" name="documento" 
+                        oninput="this.value = this.value.replace(/[^0-9]/g, '')" 
+                        maxlength="20">
+                    <select id="campoTipoDocumento" name="tipoDocumento">
+                        <option value="" disabled selected>Seleccione su tipo de documento</option>
+                        <option value="CC">CC</option>
+                        <option value="TI">TI</option>
+                        <option value="CE">CE</option>
+                    </select><br><br>
+                </div>
+            </div>
+            <div>
+                <label>Correo electrónico personal:</label>
+                <input type="email" name="correoPersonal"><br><br>
+            </div>
+            <div>
+                <label>Teléfono:</label>
+                <input type="tel" name="telefono"><br><br>
+            </div>    
+    
+            <div class="botones_final">
+                <button type="submit" class="btn-siguiente">Siguiente</button>
+                <button type="button" class="btn-cancelar" onclick="cancelarProceso('modalCrearUsuario1')">Cancelar</button>
+            </div>
+
+        </div>
+        </form> 
+    </div>  
+</div>
+
+<div id="modalCrearUsuario2" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="cancelarProceso('modalCrearUsuario2')">&times;</span>
+        <h2>Creacion del Nuevo Usuario - Paso 2</h2>       
+        
+        <form id="llenarCampos2" onsubmit="return validarYpasar('llenarCampos2','modalCrearUsuario2','modalCrearUsuario3')">
+        <div>   
+
+            <div>
+                <label>Id del Empleado:</label>
+                <input type="text" name="idEmpleado"><br><br>
+            </div>
+            <div>
+                <label>Contraseña:</label>
+                <input type="password" id="contrasena_crear" name="contrasenaCreada">
+                <button type="button" class="ver-btn" onclick="togglePassword('contrasena_crear', this)"></button><br><br>
+            </div>
+            <div>
+                <label>Confirmar Contraseña:</label>
+                <input type="password" id="confirmacioncontrasena_crear" name="confirmacionContrasenaCreada">
+                <button type="button" class="ver-btn" onclick="togglePassword('confirmacioncontrasena_crear', this)"></button><br><br>
+            </div>
+            <div>
+                <label>Correo electrónico Empresa:</label>
+                <input type="email" name="correoEmpresa"><br><br>
+            </div>
+            <div>
+                <label>Rol del Empleado:</label>
+                <select name="rolEmpleado">
+                    <option value="">Seleccione el Rol del Empleado</option>
+                    <option value="admin">Administrador</option>
+                    <option value="empleado">Vendedor</option>
+                </select><br>
+            </div>
+    
+            <div class="botones_final">
+                <button type="button" class="btn-atras" onclick="Atras('modalCrearUsuario2', 'modalCrearUsuario1')">Atras</button>
+                <button type="submit" class="btn-siguiente">Siguiente</button>
+                <button type="button" class="btn-cancelar" onclick="cancelarProceso('modalCrearUsuario2')">Cancelar</button>
+            </div>
+        </div> 
+        </form> 
+    </div>  
+</div>
+
+<div id="modalCrearUsuario3" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="cancelarProceso('modalCrearUsuario3')">&times;</span>
+        <h2>Creacion del Nuevo Usuario - Paso 3</h2>
+        <h3>Funciones y permisos de Nuevo Usuario</h3>       
+
+        <form id="llenarCampos3" onsubmit="return finalizarProceso('llenarCampos3','modalCrearUsuario3')">
+        <div>
+
+            <div class="permiso">
+                <span>Crear usuario</span>
+                <input type="checkbox" name="permisos[]" value="crear">
+            </div>
+            <div class="permiso">
+                <span>Modificar usuario</span>
+                <input type="checkbox" name="permisos[]" value="modificar">
+            </div>
+            <div class="permiso">
+                <span>Eliminar usuario</span>
+                <input type="checkbox" name="permisos[]" value="eliminar">
+            </div>
+            <div class="permiso">
+                <span>Desactivar usuario</span>
+                <input type="checkbox" name="permisos[]" value="desactivar">
+            </div>
+            <div class="permiso">
+                <span>Registrar ventas</span>
+                <input type="checkbox" name="permisos[]" value="registrarVentas">
+            </div>
+            <div class="permiso">
+                <span>Historial de ventas</span>
+                <input type="checkbox" name="permisos[]" value="historialVentas">
+            </div>
+            <div class="permiso">
+                <span>Ventas del día</span>
+                <input type="checkbox" name="permisos[]" value="ventasDia">
+            </div>
+            <div class="permiso">
+                <span>Consulta de ventas</span>
+                <input type="checkbox" name="permisos[]" value="consultarVentas">
+            </div>
+            <div class="permiso">
+                <span>Registro de productos</span>
+                <input type="checkbox" name="permisos[]" value="registroProductos">
+            </div>
+            <div class="permiso">
+                <span>Actualizar inventario</span>
+                <input type="checkbox" name="permisos[]" value="actualizarInventario">
+            </div>
+            <div class="permiso">
+                <span>Consultar inventario</span>
+                <input type="checkbox" name="permisos[]" value="consultarInventario">
+            </div>
+            <div class="permiso">
+                <span>Alertas</span>
+                <input type="checkbox" name="permisos[]" value="alertas">
+            </div>
+            <div class="permiso">
+                <span>Actualizar stock</span>
+                <input type="checkbox" name="permisos[]" value="actualizarStock">
+            </div>
+            <div class="permiso">
+                <span>Reportes</span>
+                <input type="checkbox" name="permisos[]" value="reportes">
+            </div>
+ 
+            <div class="botones_final">
+                <button type="button" class="btn-atras" onclick="Atras('modalCrearUsuario3', 'modalCrearUsuario2')">Atras</button>
+                <button type="submit" class="btn-crear_usuario">Crear Usuario</button>
+                <button type="button" class="btn-cancelar" onclick="cancelarProceso('modalCrearUsuario3')">Cancelar</button>
+            </div>
+
+        </div>
+        </form> 
+    </div>  
+</div>
+

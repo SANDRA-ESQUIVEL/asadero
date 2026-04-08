@@ -1,0 +1,96 @@
+<div id="modalRegistroProducto" class="modalRegistro">
+  <div class="modalRegistro-content">
+
+    <span class="close" onclick="cancelarProceso('modalRegistroProducto')">&times;</span>
+        <div>
+           <h3>Registro para Producto</h3> 
+        </div>
+
+        <form id="formRegistroProducto">
+        
+        <div>    
+            <div  class="casilla_fecha">
+                <label>Fecha de la creación:</label>
+                <input type="text" class= "campo-fecha" name="fecha" readonly><br><br>
+            </div>       
+
+            <div>
+                <label>Código del Producto:</label>
+                <input type="text" id="codigoProducto" readonly>
+            </div>
+
+            <!-- NOMBRE -->
+            <div>
+                <label>Nombre del producto:</label>
+                <select id="nombreProducto" required>
+                    <option value="">Seleccione el Producto</option>
+                    <option value="Pollo">Pollo</option>
+                    <option value="Costillas">Costillas</option>
+                    <option value="Gaseosa">Gaseosa</option>
+                </select>
+            </div>
+
+            <!-- CATEGORIA -->
+            <div>
+                <label>Categoría:</label>
+                <input type="text" id="categoriaProducto" readonly>
+            </div>
+
+            <!-- TIPO -->
+            <div>
+                <label>Tipo producto:</label>
+                <input type="text" id="tipoProducto" readonly>
+            </div>
+
+            <!-- UNIDAD -->
+            <div>
+                <label>Unidad de medida:</label>
+                <input type="text" id="unidadMedida" readonly>
+            </div>
+
+            <!-- PROVEEDOR -->
+            <div>
+                <label>Proveedor del Producto:</label>                
+                <select id="proveedorProducto" required>
+                    <option value="">Seleccione proveedor</option>
+                    <option>Pollos al Día</option>
+                    <option>Carnes y algo mas</option>
+                    <option>Gaseosas Nariño</option>
+                    <option>Corbeta Distribuciones</option>
+                    <option>Bodeda el Canasto</option>
+                </select>
+            </div>
+
+            <!-- PRECIO COMPRA -->
+            <div>
+                <label>Precio Unitario Compra:</label>
+                <input type="number" id="precioUnitarioCompra" required>
+            </div>
+
+            <!-- PRECIO VENTA -->
+            <div>
+                <label>Precio Unitario Venta:</label>
+                <input type="number" id="precioUnitarioVenta" readonly>
+            </div>
+
+            <!-- UBICACION -->
+            <div>
+                <label>Ubicación del Producto:</label>
+                <input type="text" id="ubicacionProducto" readonly>
+            </div>
+
+            <!-- STOCK MINIMO -->
+            <div>
+                <label>Stock mínimo:</label>
+                <input type="number" id="stockMinimoProducto" readonly>
+            </div>
+
+        <div class="botones_final">
+            <button type="submit" class="btn-registrar">Registrar Producto</button>
+            <button type="button" class="btn-cancelar" onclick="cancelarProceso('modalRegistroProducto')">Cancelar</button>
+        </div>
+
+    </form>
+
+  </div>
+</div>
