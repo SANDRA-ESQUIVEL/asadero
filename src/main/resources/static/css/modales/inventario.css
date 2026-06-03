@@ -1,0 +1,489 @@
+/*==================================================================================================================================
+REGISTRO PRODUCTO
+==================================================================================================================================*/
+/*celda de descripcion */
+.modalregistro-content textarea {
+    width: 100%;
+    padding: clamp(5px, 1vw, 8px) clamp(10px, 2vw, 12px);
+    border: 2px solid #000;
+    border-radius: clamp(4px, 1vw, 6px);
+    margin-bottom: clamp(10px, 2vw, 15px);
+    font-size: clamp(14px, 2vw, 16px);
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    
+}
+
+
+
+/*==================================================================================================================================
+CONSULTAR INVENTARIO Y MOVIMIENTOS
+==================================================================================================================================*/
+/*PARA CUADROS DE HTML: CONSULTAR INVENTARIO Y MOVIMIENTOS*/
+/*content de consultar inventario y cuadro de movimientos*/
+.modalinventario-content {
+    background-color: #fff;
+    margin: 3% auto;
+    padding: clamp(20px, 5vh, 50px);
+    border: 4px solid #000;
+    width: clamp(400px, 85%, 1600px);
+    max-height: 90vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    border-radius: 5px;
+}
+/*para las celdas o campos de inventario movimientos (filtroTipoInventario - filtroCategoriaInventario - filtroStockInventario )*/
+.campos-inventario {
+    display: flex;
+    flex-direction: column;    
+    justify-content: center;
+    padding: clamp(15px, 3vw, 30px);
+    margin: clamp(10px, 2vw, 20px) auto;
+    width: 100%;
+    max-width: 700px;
+}
+/*celdas de todos los modales INPUT - SELECT donde se relizan los registros*/
+.modalinventario-content input, .modalinventario-content select {
+    padding: clamp(5px, 1vw, 6px) clamp(10px, 2vw, 12px) !important;
+    border: 3px solid #000 !important;
+    width: 100% !important;
+    border-radius: clamp(4px, 1vw, 6px) !important;
+    margin-bottom: clamp(10px, 2vw, 15px) !important;
+    font-size: clamp(14px, 2vw, 16px) !important;
+    box-sizing: border-box;
+}
+/*boton de input buscador de inventario*/
+#buscarInventario {
+    height: clamp(30px, 5vw, 40px);
+    padding: clamp(8px, 2vw, 6px) !important;
+    border-radius: clamp(8px, 2vw, 10px) !important;
+    font-weight: 500 !important;
+    background: #d9e6f4;
+    box-sizing: border-box;
+}
+/*==================================================================================================================================
+PARA SEPARAR LA TABLA DEL CONTENT: TABLA INVENTARIO Y TABLA MOVIMIENTOS
+==================================================================================================================================*/
+.lista-resultados {
+    margin: clamp(20px, 4vw, 30px) 0 !important;
+    padding: clamp(15px, 3vw, 20px) !important;
+    max-height: clamp(300px, 60vh, 500px) !important;
+    overflow-y: auto !important;
+    border-radius: clamp(4px, 1vw, 6px) !important;
+    background: rgb(177, 177, 177);
+}
+/*=================================================================  
+PARA MARCAR EL STOCK ACTUAL EN ROJO SI ESTA MAS BAJO QUE EL MINIMO
+=================================================================*/
+/* STOCK ACTUAL BAJO EN TABLA INVENTARIO Y TABLA MOVIMIENTO */
+.stock-bajo {
+    color: red !important;
+    font-weight: bold !important;
+    font-size: clamp(16px, 2vw, 20px) !important;
+}
+
+
+
+/*==================================================================================================================================
+CONSULTA INVENTARIO
+==================================================================================================================================*/
+/*=================================================================
+BOTONES DE CONSULTA DE INVENTARIO: FILTRO - TODO - BAJO STOCK
+/*=================================================================
+/*para alineación de botones de consulta de ventas*/
+.botones_inventario {
+    display: flex;
+    gap: clamp(10px, 2vw, 20px);
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: clamp(20px, 4vw, 40px);
+    flex-wrap: wrap;
+}
+/*botones de consulta de ventas*/
+.botones_inventario button {
+    flex: 1 !important;
+    min-width: clamp(90px, 18vw, 120px) !important;
+    max-width: clamp(120px, 20vw, 150px) !important;
+    height: clamp(40px, 5vw, 45px) !important;
+    padding: clamp(8px, 2vw, 12px) clamp(12px, 2vw, 24px) !important;
+    border: 3px solid black !important;
+    border-radius: clamp(6px, 1vw, 8px) !important;
+    font-size: clamp(12px, 2vw, 14px) !important;
+    font-weight: bold !important;
+    text-transform: uppercase !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: all 0.3s ease !important;
+    box-sizing: border-box !important;
+    white-space: nowrap !important;
+    background: white;
+    color: black;
+}
+/*hover botones filtro - todo - bajo stock*/
+.botones_inventario button:hover {
+    background: #07724d;
+    color: white;
+}
+/*=================================================================
+BOTONES QUE SE SELECCIONEN QUEDEN ACTIVOS (CONSULTAR INVENTARIO)
+=================================================================*/
+/*FILTRAR - TODO - STOCK BAJO*/
+.botones_inventario button.btn-activo{
+    background-color: #026f94 !important;
+    color: white !important;
+    border: 4px solid black  !important;
+}
+/*==================================================================================================================================
+TABLA INVENTARIO CONSULTA INVENTARIO 
+==================================================================================================================================*/
+/*para la tabla*/
+#tablaInventario {
+    width: 100% !important;
+    margin: 0 !important;          
+    background: white !important;
+    overflow: hidden !important;
+    border-collapse: collapse;
+    border-radius: 4px;
+}
+/*encabezado de la tabla*/
+#tablaInventario thead th {
+    background: rgb(90, 4, 4) !important;
+    color: white !important;
+    padding: clamp(8px, 2vw, 12px) !important;
+    text-align: center !important;
+    font-weight: bold !important;
+    font-size: clamp(12px, 2vw, 14px) !important;
+    text-transform: uppercase !important;
+    letter-spacing: clamp(0.3px, 0.1vw, 0.8px) !important;
+    border: 3px solid black !important;          
+}
+/*parte donde aparece los datos que se filtran debajo del encabezado de la tabla*/
+#tablaInventario tbody td {
+    padding: clamp(5px, 1vw, 8px) !important;
+    text-align: center !important;
+    vertical-align: middle !important;
+    border: 3px solid black !important;
+    font-size: clamp(13px, 2vw, 16px);
+}
+/*hover para el campo donde aparecen los filtros*/
+#tablaInventario tbody tr:hover {
+    background: #dcecfd !important;
+}
+/* Estado Activo */
+#tablaInventario tbody .estado-activo {
+    color: #0f912d !important;
+    font-size: clamp(13px, 2vw, 16px) !important;
+    font-weight: bold !important;
+}
+/* Estado Inactivo */
+#tablaInventario tbody .estado-inactivo {
+    color: #721c24 !important;
+    font-size: clamp(13px, 2vw, 16px) !important;
+    font-weight: bold !important;
+}
+/*=================================================================  
+BOTONES ACCIONES EDITAR Y ELIMINAR PRODUCTO
+=================================================================*/
+/*para los botones editar y eliminar*/
+.btn-small {
+    width: 80%;
+    padding: clamp(5px, 1vw, 6px) !important;
+    margin: 2px !important;
+    border: 3px solid black !important;
+    border-radius: clamp(4px, 1vw, 6px) !important;
+    font-size: clamp(9px, 1.5vw, 10px) !important;
+    font-weight: bold !important;
+    cursor: pointer !important;
+    text-transform: uppercase !important;
+}
+/*boton editar*/
+.btn-editar {
+    background: #113863 !important;
+    color: white !important;
+}
+/*hover boton editar*/
+.btn-editar:hover {
+    background: #0056b3 !important;
+    transform: translateY(-1px) !important;
+}
+/*boton eliminar*/
+.btn-eliminacion {
+    background:  rgb(91, 19, 19) !important;
+    color: white !important;
+}
+/*hover boton eliminar*/
+.btn-eliminacion:hover {
+    background:  rgb(139,2,2) !important;
+    transform: translateY(-1px) !important;
+}
+
+
+
+/*==================================================================================================================================
+PARA MOVIMIENTOS
+==================================================================================================================================*/
+/*==================================================================================================================================
+TABLA PARA MOVIMIENTOS
+==================================================================================================================================*/
+/*para la tabla*/
+#tablaMovimientos {
+    width: 100% !important;
+    margin: 0 !important;          
+    background: white !important;
+    overflow: hidden !important;
+    border-collapse: collapse;
+    border-radius: 4px;
+}
+/*encabezado de la tabla*/
+#tablaMovimientos thead th {
+    background: rgb(4, 20, 90) !important;
+    color: white !important;
+    padding: clamp(8px, 2vw, 12px) !important;
+    text-align: center !important;
+    font-weight: bold !important;
+    font-size: clamp(12px, 2vw, 14px) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.8px !important;
+    border: 3px solid black !important;          
+}
+/*parte donde aparece los datos que se filtran*/
+#tablaMovimientos tbody td {
+    padding: clamp(5px, 1vw, 8px) !important;
+    text-align: center !important;
+    border-bottom: 3px solid rgb(152, 12, 12) !important;
+    vertical-align: middle !important;
+    border: 3px solid black !important;
+    font-size: clamp(12px, 2vw, 14px);
+}
+/*PARA LAS LETRAS EN TIPO DE MOVIMIENTO*/
+/*entrada*/
+.tipo-entrada{
+    color: green;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: clamp(13px, 2vw, 15px);
+}
+/*salida*/
+.tipo-salida{
+    color: red;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: clamp(13px, 2vw, 15px);
+}
+/*ajuste*/
+.tipo-ajuste{
+    color: rgb(214, 214, 18);
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: clamp(13px, 2vw, 15px);
+}
+/*PARA LETRAS EN MOTIVO - SOLO CUANDO HAY PEDIDO POR ALERTAS*/
+.motivo-alerta{
+    color: rgb(197, 197, 3);
+    font-weight: bold;
+}
+
+
+
+/*==================================================================================================================================
+PARA ALERTAS
+==================================================================================================================================*/
+/*CUADRO DE ALERTAS*/
+#resumenAlertas {
+    margin: clamp(20px, 4vw, 25px) auto !important;
+    padding: clamp(18px, 3vw, 35px) !important;
+    width: clamp(280px, 50%, 600px) !important;;
+    background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%) !important;
+    border: 3px solid #f39c12 !important;
+    border-radius: 15px !important;
+    box-shadow: 0 6px 20px rgba(243, 156, 18, 0.3) !important;
+}
+/*LETRAS DENTRO DEL CUADRO DE ALERTAS (PRODUCTOS EN ALERTA)*/
+#resumenAlertas h3 {
+    color: #d68910 !important;
+    margin: 0 0 20px 0 !important;
+    font-size: clamp(18px, 3vw, 24px) !important;
+    font-weight: bold !important;
+    text-align: center;
+    text-transform: uppercase;
+}
+/*LETRAS DENTRO DEL CUADRO DE ALERTAS (TOTAL EN ALERTA)*/
+#resumenAlertas p {
+    font-size: clamp(16px, 2.5vw, 20px) !important;
+    margin: 0 !important;
+}
+/*PARA EL CIRCULO DONDE SE VE EL NÚMERO DE ALERTAS*/
+#totalAlertas {
+    background: rgb(139,2,2) !important;
+    color: white !important;
+    padding: clamp(4px, 1vw, 6px) clamp(12px, 2vw, 15px) !important;
+    border-radius: 100% !important;
+    font-weight: bold !important;
+    font-size: clamp(18px, 3vw, 22px) !important;
+    display: inline-block !important;
+}
+/*==================================================================================================================================
+TABLA PARA ALERTAS
+==================================================================================================================================*/
+/*para la tabla*/
+#tablaAlertas {
+    width: 100% !important;
+    margin: 0 !important;          
+    background: white !important;
+    overflow: hidden !important;
+    border-collapse: collapse;
+    border-radius: 4px;
+}
+/*encabezado de la tabla*/
+#tablaAlertas thead th {
+    background: rgb(139,2,2) !important;
+    color: white !important;
+    padding: clamp(8px, 2vw, 12px) !important;
+    text-align: center !important;
+    font-weight: bold !important;
+    font-size: clamp(12px, 2vw, 14px) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.8px !important;
+    border: 3px solid black !important; 
+}
+/*parte donde aparece los datos que se filtran*/
+#tablaAlertas tbody td {
+    padding: clamp(12px, 2vw, 18px) clamp(10px, 2vw, 15px) !important;
+    text-align: center !important;
+    vertical-align: middle !important;
+    font-size: clamp(13px, 2vw, 15px) !important;
+    border: 3px solid black !important;
+}
+/*espacio de las alertas en la tabla*/
+.alerta-roja {
+    background: #ffcdd2 !important;
+}
+/*hover del espacio de las alertas*/
+.alerta-roja:hover {
+    background: #ef9a9a !important;
+}
+/*boton de reponer individual*/
+.btn-reponer{
+    background-color: #033c62;
+    color: white;
+    border: 2px solid black;
+    padding: clamp(5px, 1vw, 6px) clamp(10px, 2vw, 12px);
+    border-radius: clamp(4px, 1vw, 5px);
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: 0.3s;
+    font-size: clamp(12px, 2vw, 14px);
+}
+/*hober para el boton reponer individual*/
+.btn-reponer:hover{
+    background-color: rgb(197, 197, 3);
+    transform: scale(1.05);
+}
+/*MENSAJE EN LA TABLA CUANDO NO HAY ALERTAS*/
+#bodyAlertas tr td[colspan="8"] {
+    background: #e8f5e8 !important;
+    color: #27ae60 !important;
+    font-size: 20px !important;
+    font-weight: bold !important;
+    padding: 40px !important;
+    text-align: center !important;
+}
+
+
+
+/*==================================================================================================================================
+PARA REPORTES
+==================================================================================================================================*/
+/*boton de busqueda para seleccionar tipo de reporte*/
+.buscar-section-reporte {
+    display: block;
+    margin: clamp(30px, 8vw, 80px) auto;
+    width: clamp(280px, 60%, 900px);
+    text-align: center;
+}
+/*para alineación de botones en reporte*/
+.botones_reporte {
+    display: flex;
+    gap: clamp(12px, 3vw, 30px);
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: clamp(20px, 4vw, 40px) !important;
+    flex-wrap: wrap;
+}
+/*botones generar y mostrar todo*/
+.botones_reporte button {
+    flex: 1 !important;
+    min-width: clamp(90px, 18vw, 120px) !important;
+    max-width: clamp(120px, 22vw, 150px) !important;
+    height: clamp(40px, 5vw, 45px) !important;
+    padding: 12px 24px !important;
+    border: 3px solid black !important;
+    border-radius: 8px !important;
+    font-size: clamp(12px, 2vw, 14px) !important;
+    font-weight: bold !important;
+    text-transform: uppercase !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: all 0.3s ease !important;
+    box-sizing: border-box !important;
+    white-space: nowrap !important;
+    background: white;
+    color: black;
+}
+/*hover para botones generar y mostrar todo*/
+.botones_reporte button:hover {
+    background: #0decf0;
+}
+/*==================================================================================================================================
+PARA LOS QUE LOS BOTONES QUE SE SELECCIONEN QUEDEN ACTIVOS (REPORTES)
+==================================================================================================================================*/
+/*GENERAR Y LIMPIAR*/
+.botones_reporte button.btn-activo{
+    background-color: #03769d !important;
+    color: white !important;
+    border: 4px solid black  !important;
+}
+/*==================================================================================================================================
+TABLA PARA REPORTES
+==================================================================================================================================*/
+/*para la tabla*/
+#tablaReporte {
+    width: 100% !important;
+    background: white !important;
+    overflow: hidden !important;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 4px;
+    border: 1px solid black !important;
+}
+/*encabezado de la tabla*/
+#tablaReporte thead th {
+    background: #2980b9 !important;
+    color: white !important;
+    padding: clamp(8px, 2vw, 12px) !important;
+    text-align: center !important;
+    font-weight: bold !important;
+    font-size: clamp(12px, 2vw, 14px) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.8px !important;
+    border: 3px solid black !important;
+}
+/*parte donde aparece los datos que se filtran*/
+#tablaReporte tbody td {
+    padding: clamp(12px, 2vw, 18px) clamp(10px, 2vw, 15px) !important;
+    text-align: center !important;
+    vertical-align: middle !important;
+    font-size: clamp(13px, 2vw, 15px) !important;
+}
+/*hover donde aparece el filtro*/
+#bodyReporte tr:hover {
+    background: #ebf3fd !important;
+}

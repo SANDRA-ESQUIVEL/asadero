@@ -1,0 +1,85 @@
+<div id="modalModificarProveedor" class="modalregistro">
+    <div class="modalmodregistro-content">
+        <span class="close" onclick="cerrarModal('modalModificarProveedor')">&times;</span>
+        <h2>Modificar Proveedor</h2>
+        
+            <div class="casilla_fecha">
+                <label>Fecha de Modificación:</label>
+                <input type="text" class="campo-fecha" id="fechaRegistroProveedorMod" name="fechaRegistroProveedorMod" readonly>
+            </div>
+
+        <div class="buscar-section">
+            <input type="text" id="buscarProveedorMod" name="buscarProveedorMod" class="buscar-input" placeholder="Buscar por ID, nombre, razón social, NIT...">
+        </div>
+
+        <div class="botones">
+            <button type="button" onclick="buscarProveedorMod()" class="btn-buscar">Buscar Proveedor</button>
+            <button type="button" onclick="mostrarTodosProveedoresMod()" class="btn-todos">Todos los Proveedores</button>
+        </div>
+
+        <div id="listaProveedoresMod" class="lista-resultados"></div>
+
+        <form id="formModificarProveedor" style="display:none;" onsubmit="return actualizarProveedor(event)">
+            <input type="hidden" id="proveedorIdModificar" name="proveedorIdModificar">
+
+            <div class="campos-registro">
+                <div>
+                    <label>ID Proveedor:</label>
+                    <input type="text" id="id_proveedor_mod" name="id_proveedor_mod" class="select-bloqueado" readonly>
+                </div>
+
+                <div>
+                    <label>Nombre:</label>
+                    <input type="text" id="nombre_proveedor_mod" name="nombre_proveedor_mod">
+                </div>
+
+                <div>
+                    <label>Tipo de proveedor:</label>
+                    <select id="tipoProveedor_mod" name="tipoProveedor_mod" onchange="toggleRazonSocial('modificar')">
+                        <option value="empresa">Empresa</option>
+                        <option value="persona">Persona natural</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label>Razón Social:</label>
+                    <input type="text" id="razonSocial_proveedor_mod" name="razonSocial_proveedor_mod">
+                </div>
+
+                <div class="casillasid">
+                    <label>Tipo NIT:</label>
+                    <select id="tipoNit_proveedor_mod" name="tipoNit_proveedor_mod">
+                        <option value="RUT">RUT</option>
+                        <option value="NIT">NIT</option>
+                        <option value="CE">Cédula Extranjero</option>
+                    </select>
+                </div>
+
+                <div class="casillasid">
+                    <label>NIT:</label>
+                    <input type="text" id="nit_proveedor_mod" name="nit_proveedor_mod" oninput="soloNumeros(this)">
+                </div>
+
+                <div>
+                    <label>Teléfono:</label>
+                    <input type="tel" id="telefono_proveedor_mod" name="telefono_proveedor_mod" oninput="soloNumeros(this)" minlength="7" maxlength="15">
+                </div>
+
+                <div>
+                    <label>Dirección:</label>
+                    <input type="text" id="direccion_proveedor_mod" name="direccion_proveedor_mod">
+                </div>
+
+                <div>
+                    <label>Email:</label>
+                    <input type="email" id="email_proveedor_mod" name="email_proveedor_mod">
+                </div>
+            </div>
+
+            <div class="botones_final_column">
+                <button type="submit" class="btn-confirma_Modificacion">Guardar Cambios</button>
+                <button type="button" class="btn-cancelar" onclick="cancelarProceso('modalModificarProveedor')">Cancelar</button>
+            </div>
+        </form>
+    </div>
+</div>

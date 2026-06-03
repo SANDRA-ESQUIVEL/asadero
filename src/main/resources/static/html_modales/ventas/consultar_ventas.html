@@ -1,0 +1,117 @@
+<div id="modalConsultaVentas" class="modalregistro">
+    <div class="modalConsultarventa-content">
+        <span class="close" onclick="cerrarModal('modalConsultaVentas')">&times;</span>
+        <h2>Consultar Ventas</h2>
+
+            <div class="casilla_fecha">
+                <label>Fecha Consulta:</label>
+                <input type="text" class="campo-fecha" id="fechaConsultaVentas" name="fechaConsultaVentas" readonly>
+            </div>
+
+        <div class="buscar-ventas">
+            <div class="filtro-fechas">
+                <h4>Buscar por fechas</h4>
+
+                <div class="grupo-fechas">
+                    <div class="campo-grupofechas">
+                        <label for="fechaInicioVentas">Seleccione fecha inicial</label>
+                        <input type="date" id="fechaInicioVentas" name="fechaInicioVentas">
+                    </div>
+
+                    <div class="campo-grupofechas">
+                        <label for="fechaFinVentas">Seleccione fecha final</label>
+                        <input type="date" id="fechaFinVentas" name="fechaFinVentas">
+                    </div>
+                </div>
+
+            </div>
+
+            <select id="filtroCliente" name="filtroCliente">
+                <option value="">Todos los clientes</option>
+            </select>
+
+            <select id="filtroEmpleado" name="filtroEmpleado">
+                <option value="">Todos los empleados</option>
+            </select>
+
+            <select id="filtroEstadoPago" name="filtroEstadoPago">
+                <option value="">Todos los pagos</option>
+                <option value="PAGADO">PAGADO</option>
+                <option value="PENDIENTE">PENDIENTE</option>
+            </select>
+
+            <select id="filtroEstadoPedido" name="filtroEstadoPedido">
+                <option value="">Todos los pedidos</option>
+                <option value="EN PREPARACIÓN">EN PREPARACIÓN</option>
+                <option value="EN CAMINO">EN CAMINO</option>
+                <option value="ENTREGADO">ENTREGADO</option>
+                <option value="CANCELADO">CANCELADO</option>
+            </select>
+
+            <select id="filtroPago" name="filtroPago">
+                <option value="">Forma de pago</option>
+                <option value="Efectivo">Efectivo</option>
+                <option value="Tarjeta">Tarjeta</option>
+                <option value="Transferencia">Transferencia</option>
+                <option value="Contra entrega">Contra entrega</option>
+            </select>
+
+            <div class="botones_ventas">
+                <button class="btn-buscar" type="button" onclick="seleccionarBotonActivo(this, '.botones_ventas button');filtrarVentas();">Filtrar</button>
+                <button class="btn-todos" type="button" onclick="seleccionarBotonActivo(this, '.botones_ventas button');ventasHoy();">Hoy</button>
+                <button class="btn-todos" type="button" onclick="seleccionarBotonActivo(this, '.botones_ventas button');ventasSemana();">Semana</button>
+                <button class="btn-todos" type="button" onclick="seleccionarBotonActivo(this, '.botones_ventas button');ventasMes();">Mes</button>
+            </div>
+        </div>
+
+        <!-- TABLA -->
+        <div class="lista-resultados">
+            <table id="tablaVentas">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Fecha/Hora</th>
+                        <th>Empleado</th>
+                        <th>Cliente</th>
+                        <th>Tipo Pedido</th>
+                        <th>Forma Pago</th>
+                        <th>Estado Pago</th>
+                        <th>Total</th>
+                        <th>Estado Pedido</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>  
+        
+        <div class="botones_final">
+            <button type="button" class="btn-exportar" onclick="exportarVentasExcel()">Exportar Excel</button>
+            <button type="button" class="btn-exportar" onclick="exportarVentasPDF()">Exportar PDF</button>
+            <button type="button" class="btn-cancelar" onclick="cancelarProceso('modalConsultaVentas')">Cerrar</button>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+<!-- MODAL FACTURA -->
+<div id="modalFacturaVenta" class="modalregistro">
+    <div class="modalregistro-content modal-factura">
+        <span class="close" onclick="cerrarModal('modalFacturaVenta')">&times;</span>
+        <h2>Factura de Venta</h2>
+
+            <div>
+                <img src="/img/logobroasterhouse.png" class="logo_factura">
+            </div>
+
+        <div id="contenidoFactura"></div>
+
+        <div class="botones_final">
+            <button type="button" class="btn-exportar" onclick="imprimirFactura()">Imprimir</button>
+            <button type="button" class="btn-cancelar" onclick="cerrarModal('modalFacturaVenta')">Cerrar</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,48 @@
+<!-- INGRESAR_USUARIO.HTML= NUMERADO 3
+    
+        PAGINA PRINCIPAL: Inicio del sistema.
+        En el aparecen el logo del asadero, tambien las opciones ADMINISTRADOR y VENDEDOR -->
+
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ingreso de Usuario</title>
+        <link rel="stylesheet" href="/css/styles_pag_principal.css">
+    </head>
+<body>
+    <header>The Broaster House</header>
+    
+    <main>
+        <section>
+            <div class="container">
+                <img src="/img/logobroasterhouse.png" alt="The Broaster House" class="logo">
+                <button type="button" id="rolPrincipal" class="btnselect">ROL</button>
+
+                    <div class="input-group">
+                        <input type="text" id="idEmpleado" name="idEmpleado" placeholder="Ingrese Id del Usuario" class="campo">
+                    </div>
+
+                    <div class="input-group password-input">
+                        <input type="password" id="password" name="password" placeholder="Ingrese Contraseña" class="campo-password">
+                    </div>
+
+                    <div class="botones">
+                        <button type="button" class="btning" onclick="acceso()">Ingresar</button>
+                        <button type="button" class="btnolv" onclick="abrirOlvido()">Olvide contraseña</button>
+                    </div>
+
+                <button type="button" id="btnAtras" class="btnAtras" onclick="volverPagina()">Atrás</button>
+            </div>      
+        </section>
+    </main>
+
+<footer>
+    <p>© 2025 Elaborado por Sandra Esquivel - ADSO 3070230</p>
+</footer>
+
+    <script src="/js/script.pag_principal.js"></script>
+
+</body>
+</html>

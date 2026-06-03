@@ -1,0 +1,157 @@
+<div id="modalCrearUsuario1" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="cerrarModal('modalCrearUsuario1')">&times;</span>
+        <h2>Creación del Nuevo Usuario - Paso 1</h2>       
+        
+            <div  class="casilla_fecha">
+                <label>Fecha de Creación:</label>
+                <input type="text" class= "campo-fecha" id="fechaCreacionUsuario" name="fechaCreacionUsuario" readonly>
+            </div>
+
+        <form id="llenarCampos1" onsubmit="return validarYpasar('llenarCampos1','modalCrearUsuario1','modalCrearUsuario2')">
+            <div class="campos-diligenciar">  
+                <div>
+                    <label>Nombre:</label>
+                    <input type="text" id="nombre_usuario" name="nombre_usuario">
+                </div>
+
+                <div>
+                    <label>Apellido:</label>
+                    <input type="text" id="apellido_usuario" name="apellido_usuario">
+                </div>
+
+                <div class="casillas">
+                    <div class="seleccionid">
+                        <label>Tipo de documento</label>
+                        <select id="tipoDocumento_usuario" name="tipoDocumento_usuario" onchange="validarNumeroDocumento(this)">
+                            <option value="" disabled selected>Seleccione su tipo de documento</option>
+                            <option value="CC">Cédula de Ciudadanía</option>
+                            <option value="TI">Tarjeta de Identidad</option>
+                            <option value="CE">Cédula de Extranjería</option>
+                            <option value="PA">Pasaporte</option>
+                        </select>    
+                    </div>
+
+                    <div class="celdaid">    
+                        <label>Número de documento:</label>
+                        <input type="text" id="documento_usuario" name="documento_usuario" oninput="validarNumeroDocumento(this)" maxlength="30">
+                    </div>
+                </div>
+
+                <div>
+                    <label>Correo electrónico personal:</label>
+                    <input type="email" id="correoPersonal_usuario" name="correoPersonal_usuario">
+                </div>
+
+                <div>
+                    <label>Teléfono:</label>
+                    <input type="tel" id="telefono_usuario" name="telefono_usuario" oninput="soloNumeros(this)" pattern="[0-9]{10}" maxlength="10">
+                </div>
+            </div>
+                    
+                <div class="botones_final">
+                    <button type="submit" class="btn-siguiente">Siguiente</button>
+                    <button type="button" class="btn-cancelar" onclick="cancelarProceso('modalCrearUsuario1')">Cancelar</button>
+                </div>
+        </form> 
+    </div>  
+</div>
+
+<div id="modalCrearUsuario2" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="cerrarModal('modalCrearUsuario2')">&times;</span>
+        <h2>Creacion del Nuevo Usuario - Paso 2</h2>
+        
+            <div  class="casilla_fecha">
+                <label>Fecha de Creación:</label>
+                <input type="text" class= "campo-fecha" id="fechaCreacionUsuario2" name="fechaCreacionUsuario2" readonly>
+            </div>
+            
+        <form id="llenarCampos2" onsubmit="return validarYpasarPaso2('llenarCampos2','modalCrearUsuario2','modalCrearUsuario3')">
+            <div class="campos-diligenciar">   
+                <div class="celdarol">
+                    <label>Rol del Empleado:</label>
+                    <select id="rolEmpleado_usuario" name="rolEmpleado_usuario">
+                        <option value="" disabled selected>Seleccione el Rol del Empleado</option>
+                        <option value="admin">Administrador</option>
+                        <option value="vendedor">Vendedor</option>
+                    </select>
+                </div>
+                
+                <div>
+                    <label>Id del Empleado:</label>
+                    <input type="text" id="idEmpleado_usuario" name="idEmpleado_usuario" class="select-bloqueado" readonly>
+                </div>
+
+                <div class="grupo-password">
+                    <label>Contraseña:</label>
+                    <input type="password" id="contrasenaCreada_usuario" name="contrasenaCreada_usuario" oninput="validarContrasenaSegura('contrasenaCreada_usuario')">
+                    <span id="mensajeSeguridadPassword_usuario" class="mensaje-password"></span>
+                </div>
+
+                <div>
+                    <label>Confirmar Contraseña:</label>
+                    <input type="password" id="confirmacionContrasenaCreada_usuario" name="confirmacionContrasenaCreada_usuario" oninput="validarContraseñasIguales(this.form)">
+                </div>
+
+                <div>
+                    <label>Correo electrónico Empresa:</label>
+                    <input type="email" id="correoEmpresa_usuario" name="correoEmpresa_usuario" value="broasterhouse@gmail.com">
+                </div>
+
+            </div> 
+            
+                <div class="botones_final">
+                    <button type="button" class="btn-atras" onclick="Atras('modalCrearUsuario2', 'modalCrearUsuario1')">Atrás</button>
+                    <button type="submit" class="btn-siguiente">Siguiente</button>
+                    <button type="button" class="btn-cancelar" onclick="cancelarProceso('modalCrearUsuario2')">Cancelar</button>
+                </div>
+        </form> 
+    </div>  
+</div>
+
+<div id="modalCrearUsuario3" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="cerrarModal('modalCrearUsuario3')">&times;</span>
+        <h2>Creacion del Nuevo Usuario - Paso 3</h2>
+
+            <div  class="casilla_fecha">
+                <label>Fecha de Creación:</label>
+                <input type="text" class= "campo-fecha" id="fechaCreacionUsuario3" name="fechaCreacionUsuario3" readonly>
+            </div>
+
+        <h3>Funciones y permisos de Nuevo Usuario</h3>       
+
+        <form id="llenarCampos3" onsubmit="return finalizarProceso('llenarCampos3','modalCrearUsuario3')">
+            <div class="permisos-container">
+                <div class="permiso">
+                    <span>Gestión de Usuarios</span>
+                    <input type="checkbox" id="permiso_usuarios_crear" name="permiso_usuarios_crear" value="gestion_usuarios">
+                </div>
+                <div class="permiso">
+                    <span>Gestión de Clientes</span>
+                    <input type="checkbox" id="permiso_clientes_crear" name="permiso_clientes_crear" value="gestion_clientes">
+                </div>
+                <div class="permiso">
+                    <span>Gestión de Proveedores</span>
+                    <input type="checkbox" id="permiso_proveedores_crear" name="permiso_proveedores_crear" value="gestion_proveedores">
+                </div>
+                <div class="permiso">
+                    <span>Gestión de Ventas</span>
+                    <input type="checkbox" id="permiso_ventas_crear" name="permiso_ventas_crear" value="gestion_ventas">
+                </div>
+                <div class="permiso">
+                    <span>Gestión de Inventario</span>
+                    <input type="checkbox" id="permiso_inventario_crear" name="permiso_inventario_crear" value="gestion_inventario">
+                </div>
+            </div>
+    
+            <div class="botones_final">
+                <button type="button" class="btn-atras" onclick="Atras('modalCrearUsuario3', 'modalCrearUsuario2')">Atrás</button>
+                <button type="submit" class="btn-registrar">Crear Usuario</button>
+                <button type="button" class="btn-cancelar" onclick="cancelarProceso('modalCrearUsuario3')">Cancelar</button>
+            </div>
+        </form> 
+    </div>  
+</div>
+

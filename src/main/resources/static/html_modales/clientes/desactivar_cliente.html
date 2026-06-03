@@ -1,0 +1,45 @@
+<div id="modalDesactivarCliente" class="modales">
+    <div class="modales-content">
+        <span class="close" onclick="cerrarModal('modalDesactivarCliente')">&times;</span>
+        <h2>Desactivar Cliente</h2>
+                    
+            <div class="casilla_fecha">
+                <label>Fecha Desactivación:</label>
+                <input type="text" class="campo-fecha" id="fechaDesactivacionCliente" name="fechaDesactivacionCliente" readonly>
+            </div>
+            
+        <div class="buscar-section">
+            <input type="text" id="buscarDesactivarCliente" name="buscarDesactivarCliente" class="buscar-input" placeholder="Debes Buscar por ID, nombres, apellidos, teléfono...">
+        </div>
+
+        <div class="botones">
+            <button type="button" onclick="buscarDesactivarCliente()" class="btn-buscar">Buscar Cliente</button>
+            <button type="button" onclick="mostrarTodosDesactivarCliente()" class="btn-todos">Todos los Clientes</button>
+        </div>
+
+        <div id="listaDesactivarCliente" class="lista-resultados"></div>
+
+        <div id="confirmacionDesactivarCliente" style="display:none;">
+            <input type="hidden" id="clienteIdDesactivar" name="clienteIdDesactivar">
+            
+            <div id="infoClienteDesactivar" class="info-mensaje">
+                <h4 id="mensajeConfirmacionCliente"></h4>
+            </div>
+
+            <div class="grupo-motivo">
+                <label>Motivo de Desactivación:</label>
+                <select id="motivoDesactivacionCliente" name="motivoDesactivacionCliente">
+                    <option value="" disabled selected>Seleccionar motivo</option>
+                    <option value="Inactivo">Cliente inactivo</option>
+                    <option value="Solicitud">Solicitud del cliente</option>
+                    <option value="Otro">Otro</option>
+                </select>
+            </div>
+            
+            <div class="botones_final">
+                <button type="button" onclick="confirmarDesactivarCliente()" class="btn-confirma_desactivacion">Confirmar</button>
+                <button type="button" onclick="cancelarProceso('modalDesactivarCliente','clientes')" class="btn-cancelar">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>

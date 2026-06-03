@@ -1,0 +1,46 @@
+<div id="modalEliminarCliente" class="modales">
+    <div class="modales-content">
+        <span class="close" onclick="cerrarModal('modalEliminarCliente')">&times;</span>
+        <h2>Eliminar Cliente</h2>
+
+            <div class="casilla_fecha">
+                <label>Fecha de Eliminación:</label>
+                <input type="text" class="campo-fecha" id="fechaEliminacionCliente" name="fechaEliminacionCliente" readonly>
+            </div>
+
+        <div class="buscar-section">
+            <input type="text" id="buscarEliminarCliente" name="buscarEliminarCliente" class="buscar-input" placeholder="Buscar ID, nombres, apellidos, teléfono...">
+        </div>
+
+        <div class="botones">
+            <button type="button" onclick="buscarEliminarCliente()" class="btn-buscar">Buscar Cliente</button>
+            <button type="button" onclick="mostrarTodosEliminarCliente()" class="btn-todos">Todos los Clientes</button>
+        </div>
+
+        <div id="listaEliminarCliente" class="lista-resultados"></div>
+
+        <div id="confirmacionEliminarCliente" style="display:none;">
+            <input type="hidden" id="clienteIdEliminar" name="clienteIdEliminar">
+            
+            <div id="infoClienteEliminar" class="info-mensaje">
+                <h4 id="mensajeEliminarCliente"></h4>
+                <p><strong>Esta acción no se puede deshacer.</strong></p>
+            </div>
+
+            <div class="grupo-motivo">
+                <label>Motivo de eliminación:</label>
+                <select id="motivoEliminarCliente" name="motivoEliminarCliente">
+                    <option value="" disabled selected>Seleccionar motivo</option>
+                    <option value="Error">Registro duplicado / error</option>
+                    <option value="Solicitud">Solicitud del cliente</option>
+                    <option value="Otro">Otro</option>
+                </select>
+            </div>
+            
+            <div class="botones_final">
+                <button type="button" onclick="confirmarEliminarCliente()" class="btn-eliminar">Sí, Eliminar</button>
+                <button type="button" onclick="cancelarProceso('modalEliminarCliente','clientes')" class="btn-cancelar">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>

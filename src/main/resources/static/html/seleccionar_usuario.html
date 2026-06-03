@@ -1,0 +1,45 @@
+<!-- SELECCIONAR_USUARIO.HTML= NUMERADO 2
+    AL DAR CLIC EN ALGUN ROL SE DEBE SELECCIONAR EL USUARIO CORRESPONDIENTE PARA INGRESAR A LA CUENTA -->
+
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Seleccionar Usuario</title>
+        <link rel="stylesheet" href="/css/styles_pag_principal.css">
+    </head>
+<body>
+
+<header>The Broaster House</header>
+
+<main>
+    <section>
+        <div class="container">
+            <button type="button" id="rolPrincipal" class="btnselect">ROL</button>
+            <img src="/img/logobroasterhouse.png" alt="The Broaster House" class="logo">
+
+            <!-- Lista de administradores -->
+            <div id="listaAdmin" style="display:none;">
+                <button type="button" class="btnusuarios" onclick="seleccionarUsuario('Pepita Perez')">ADMINISTRADORA PEPITA PEREZ</button>
+            </div>
+
+            <!-- Lista de vendedores -->
+            <div id="listaVendedores" style="display:none;">
+                <button type="button" class="btnusuarios" onclick="seleccionarUsuario('Juanita Diaz')">VENDEDORA JUANITA DÍAZ</button>
+                <button type="button" class="btnusuarios" onclick="seleccionarUsuario('Anita Lopez')">VENDEDORA ANITA LOPEZ</button>
+            </div>
+
+                <button type="button" id="btnAtras" class="btnAtras" onclick="volverPagina()">Atrás</button>
+        </div>      
+    </section>
+</main>
+
+<footer>
+    <p>© 2025 Elaborado por Sandra Esquivel - ADSO 3070230</p>
+</footer>
+
+<script src="/js/script.pag_principal.js"></script>
+
+</body>
+</html>

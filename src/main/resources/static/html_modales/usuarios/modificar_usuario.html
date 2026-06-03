@@ -1,0 +1,176 @@
+<div id="modalModificar1" class="modalmod">
+    <div class="modalmod-content">
+        <span class="close" onclick="cerrarModal('modalModificar1')">&times;</span><br>
+
+            <div  class="casilla_fecha">
+                <label>Fecha de Modificación:</label>
+                <input type="text" class= "campo-fecha" id="fechaCreacionUsuarioMod1" name="fechaCreacionUsuarioMod1" readonly>
+            </div>        
+        
+        <h1>Selecciona el usuario a Modificar</h1>
+        
+        <div class="usuarios-lista" id="usuariosListaModificar"></div>
+
+        <div class="botones_final">
+            <button type="button" id="btnModificarPaso1" class="btn-modificar" onclick="abrirModificarUsuario()">Modificar</button>
+            <button type="button" class="btn-cancelar" onclick="cancelarProceso('modalModificar1')">Cancelar</button>
+        </div>
+    </div>
+</div>
+
+<div id="modalModificar2" class="modalmod">
+    <div class="modalmod-content">
+        <span class="close" onclick="cerrarModal('modalModificar2')">&times;</span>
+        <h2>Modificar Usuario - Paso 1</h2>
+        
+            <div  class="casilla_fecha">
+                <label>Fecha de Modificación:</label>
+                <input type="text" class= "campo-fecha" id="fechaCreacionUsuarioMod2" name="fechaCreacionUsuarioMod2" readonly>
+            </div>
+
+        <form id="ModificarCampos2" onsubmit="return actualizarUsuario('ModificarCampos2','modalModificar2','modalModificar3')">     
+            <div class="campos-diligenciar">     
+                <div>
+                    <label>Nombres:</label>
+                    <input type="text" id="nombre_usuario_mod" name="nombre_usuario_mod">
+                </div>
+
+                <div>
+                    <label>Apellidos:</label>
+                    <input type="text" id="apellido_usuario_mod" name="apellido_usuario_mod">
+                </div>
+
+                <div class="casillas">
+                    <div class="seleccionid">
+                        <label>Tipo de documento</label>
+                        <select id="tipoDocumento_usuario_mod" name="tipoDocumento_usuario_mod" onchange="validarNumeroDocumento(this)">
+                            <option value="" disabled selected>Seleccione su tipo de documento</option>
+                            <option value="CC">Cédula de Ciudadanía</option>
+                            <option value="TI">Tarjeta de Identidad</option>
+                            <option value="CE">Cédula de Extranjería</option>
+                            <option value="PA">Pasaporte</option>
+                        </select>
+                    </div>
+
+                    <div class="celdaid">    
+                        <label>Número de documento:</label>
+                        <input type="text" id="documento_usuario_mod" name="documento_usuario_mod" oninput="validarNumeroDocumento(this)" maxlength="30">
+                    </div>
+                </div>
+
+                <div>
+                    <label>Correo electrónico:</label>
+                    <input type="email" id="correoPersonal_usuario_mod" name="correoPersonal_usuario_mod">
+                </div>
+
+                <div>
+                    <label>Teléfono:</label>
+                    <input type="tel" id="telefono_usuario_mod" name="telefono_usuario_mod" oninput="soloNumeros(this)" pattern="[0-9]{10}" maxlength="10">
+                </div>
+            </div>    
+        
+                <div class="botones_final">
+                    <button type="button" class="btn-atras" onclick="Atras('modalModificar2', 'modalModificar1')">Atrás</button>
+                    <button type="submit" class="btn-siguiente">Siguiente</button>
+                    <button type="button" class="btn-cancelar" onclick="cancelarProceso('modalModificar2')">Cancelar</button>
+                </div>
+        </form> 
+    </div>  
+</div>
+
+<div id="modalModificar3" class="modalmod">
+    <div class="modalmod-content">
+        <span class="close" onclick="cerrarModal('modalModificar3')">&times;</span>
+        <h2>Modificar Usuario - Paso 2</h2> 
+        
+            <div  class="casilla_fecha">
+                <label>Fecha de Modificación:</label>
+                <input type="text" class= "campo-fecha" id="fechaCreacionUsuarioMod3" name="fechaCreacionUsuarioMod3" readonly>
+            </div>
+        
+        <form id="ModificarCampos3" onsubmit="return actualizarUsuario2('ModificarCampos3','modalModificar3','modalModificar4')">
+            <div class="campos-diligenciar">   
+                <div class="celdaid">
+                    <label>Rol del Empleado:</label>
+                    <select id="rolEmpleado_usuario_mod" name="rolEmpleado_usuario_mod" onchange="actualizarIdEmpleadoModificar()">
+                        <option value="" disabled selected>Seleccione el Rol del Empleado</option>
+                        <option value="admin">Administrador</option>
+                        <option value="vendedor">Vendedor</option>
+                    </select>
+                </div>                
+                
+                <div>
+                    <label>Id del Empleado:</label>
+                    <input type="text" id="idEmpleado_usuario_mod" name="idEmpleado_usuario_mod" class="select-bloqueado" readonly>
+                </div>
+
+                <div class="grupo-password">
+                    <label>Contrasena:</label>
+                    <input type="password" id="contrasena_usuario_mod" name="contrasena_usuario_mod" oninput="validarContrasenaSegura('contrasena_usuario_mod')">
+                    <span id="mensajeSeguridadPassword_usuarioMod" class="mensaje-password"></span>
+                </div>
+
+                <div>
+                    <label>Confirmar Contrasena:</label>
+                    <input type="password" id="confirmacionContrasena_usuario_mod" name="confirmacionContrasena_usuario_mod" oninput="validarContraseñasIguales(this.form)">
+                </div>
+
+                <div>
+                    <label>Correo electrónico Empresa:</label>
+                    <input type="email" id="correoEmpresa_usuario_mod" name="correoEmpresa_usuario_mod">
+                </div>
+            </div>    
+    
+            <div class="botones_final">
+                <button type="button" class="btn-atras" onclick="Atras('modalModificar3', 'modalModificar2')">Atrás</button>
+                <button type="submit" class="btn-siguiente">Siguiente</button>
+                <button type="button" class="btn-cancelar" onclick="cancelarProceso('modalModificar3')">Cancelar</button>
+            </div>
+        </form> 
+    </div>  
+</div>
+
+<div id="modalModificar4" class="modalmod">
+    <div class="modalmod-content">
+        <span class="close" onclick="cerrarModal('modalModificar4')">&times;</span>
+        <h2>Modificar Usuario - Paso 3</h2>
+
+            <div  class="casilla_fecha">
+                <label>Fecha de Modificación:</label>
+                <input type="text" class= "campo-fecha" id="fechaCreacionUsuarioMod4" name="fechaCreacionUsuarioMod4" readonly>
+            </div>
+
+        <h3>Funciones y permisos del Usuario</h3>       
+
+        <form id="ModificarCampos4" onsubmit="return finalizarProcesoActualizarUsuario('ModificarCampos4','modalModificar4')">
+            <div class="permisos-container">
+                <div class="permiso-mod">
+                    <span>Gestión de Usuarios</span>
+                    <input type="checkbox" id="permiso_usuarios_mod" name="permiso_usuarios_mod" value="gestion_usuarios">
+                </div>
+                <div class="permiso-mod">
+                    <span>Gestión de Clientes</span>
+                    <input type="checkbox" id="permiso_clientes_mod" name="permiso_clientes_mod" value="gestion_clientes">
+                </div>
+                <div class="permiso-mod">
+                    <span>Gestión de Proveedores</span>
+                    <input type="checkbox" id="permiso_proveedores_mod" name="permiso_proveedores_mod" value="gestion_proveedores">
+                </div>
+                <div class="permiso-mod">
+                    <span>Gestión de Ventas</span>
+                    <input type="checkbox" id="permiso_ventas_mod" name="permiso_ventas_mod" value="gestion_ventas">
+                </div>
+                <div class="permiso-mod">
+                    <span>Gestión de Inventario</span>
+                    <input type="checkbox" id="permiso_inventario_mod" name="permiso_inventario_mod" value="gestion_inventario">
+                </div>
+            </div>
+    
+            <div class="botones_final">
+                <button type="button" class="btn-atras" onclick="Atras('modalModificar4', 'modalModificar3')">Atrás</button>
+                <button type="submit" class="btn-confirma_Modificacion">Modificar Usuario</button>
+                <button type="button" class="btn-cancelar" onclick="cancelarProceso('modalModificar4')">Cancelar</button>
+            </div>
+        </form> 
+    </div>  
+</div>

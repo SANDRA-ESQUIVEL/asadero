@@ -1,0 +1,171 @@
+<div id="modalRegistroProducto" class="modalregistro">
+    <div class="modalregistro-content">
+        <span class="close" onclick="cerrarModal('modalRegistroProducto')">&times;</span>
+        <h2>Registro de Producto</h2>   
+
+            <div class="casilla_fecha">
+                <label>Fecha de registro:</label>
+                <input type="text" class="campo-fecha" id="fechaRegistroProducto" name="fechaRegistroProducto" readonly>
+            </div>
+
+        <form id="formRegistroProducto" onsubmit="return registrarProducto(event)">
+            <div class="campos-registro">  
+                <div>
+                    <label>Código Producto:</label>
+                    <input type="text" id="codigoProducto" name="codigoProducto" placeholder="Generado automáticamente" class="select-bloqueado" readonly>
+                </div>
+
+                <div>
+                    <label>Nombre Producto:</label>
+                    <select id="nombreProducto" name="nombreProducto" onchange="autocompletarProducto()">
+                        <option value="" disabled selected>Seleccionar producto</option>
+                        <option value="Pollo">Pollo</option>
+                        <option value="Filete Pechuga">Filete Pechuga</option>
+                        <option value="Costillas Cerdo">Costillas de Cerdo</option>
+                        <option value="Salchicha Manguera">Salchicha Manguera</option>
+                        <option value="Papa">Papa</option>
+                        <option value="Verduras">Verduras</option>
+                        <option value="Aceite">Aceite</option>
+                        <option value="Harina">Harina</option>
+                        <option value="Arroz">Arroz</option>
+                        <option value="Granos">Granos</option>
+                        <option value="Botella de Agua Cristal 600 ml">Botella de Agua Cristal 600 ml</option>
+                        <option value="Botella de Agua Cristal con Gas 600 ml">Botella de Agua Cristal con Gas 600 ml</option>
+                        <option value="Coca Cola 600 ml">Coca Cola 600ml</option>
+                        <option value="Coca Cola 1.5 L">Coca Cola 1.5 L</option>
+                        <option value="Colombiana 600 ml">Colombiana 600 ml</option>
+                        <option value="Colombiana 1.5 L">Colombiana 1.5 L</option>
+                        <option value="Manzana Postobon 600 ml">Manzana Postobón 600 ml</option>
+                        <option value="Manzana Postobon 1.5 L">Manzana Postobón 1.5 L</option>
+                        <option value="Uva Postobon 600 ml">Uva Postobón 600 ml</option>
+                        <option value="Uva Postobon 1.5 L">Uva Postobón 1.5 L</option>
+                        <option value="Jugo Hit 500 ml">Jugo Hit 500 ml</option>
+                        <option value="Cerveza en Lata 330 ml">Cerveza en Lata 330 ml</option>                        
+                        <option value="Salsas de Servicio">Salsas de Servicio</option>
+                        <option value="Bolsas">Bolsas</option>
+                        <option value="Servilletas">Servilletas</option>
+                        <option value="Vasos Desechables">Vasos Desechables</option>
+                        <option value="Cubiertos Desechables">Cubiertos Desechables</option>
+                        <option value="Especias secas">Especias secas</option>
+                        <option value="Salsa BBQ">Salsa BBQ</option>
+                        <option value="Otro">Otro producto</option>
+                    </select>
+                </div>
+
+                <div id="contenedorOtroProducto" style="display:none;">
+                    <label>Nuevo Producto:</label>
+                    <input type="text" id="otroNombreProducto" name="otroNombreProducto" placeholder="Escriba el nombre del producto">
+                </div>
+
+                <div>
+                    <label>Tipo de Producto:</label>
+                    <select id="tipoProducto" name="tipoProducto">
+                        <option value="">Seleccionar tipo</option>
+                        <option value="Materia Prima">Materia Prima</option>
+                        <option value="Ingrediente">Ingrediente</option>
+                        <option value="Bebida">Bebida</option>
+                        <option value="Desechable">Desechable</option>
+                        <option value="Limpieza">Limpieza</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label>Categoría:</label>
+                    <select id="categoriaProducto" name="categoriaProducto">
+                        <option value="">Seleccionar categoría</option>
+                        <option value="Alimentos">Alimentos</option>
+                        <option value="Acompañamientos">Acompañamientos</option>
+                        <option value="Bebidas">Bebidas</option>
+                        <option value="Salsas">Salsas</option>
+                        <option value="Desechables">Desechables</option>
+                        <option value="Limpieza">Limpieza</option>
+                        <option value="Otros">Otros</option>
+                    </select>
+                </div>
+
+                <div class="casillas">
+                    <div class="celdaid">
+                        <label>Precio Venta:</label>
+                        <input type="number" id="precioVentaProducto" name="precioVentaProducto" step="0.01" min="0" placeholder="0.00">
+                    </div>
+
+                    <div class="celdaid">
+                        <label>Costo Compra:</label>
+                        <input type="number" id="costoCompraProducto" name="costoCompraProducto" step="0.01" min="0" placeholder="0.00">
+                    </div>
+                </div>
+
+                <div>
+                    <label>Ubicación:</label>
+                    <select id="ubicacionProducto" name="ubicacionProducto">
+                        <option value="">Seleccionar Ubicación</option>
+                        <option value="Nevera 1">Nevera 1 (Pollo)</option>
+                        <option value="Nevera 2">Nevera 2 (Carnes)</option>
+                        <option value="Nevera 3">Nevera 3 (Papas)</option>
+                        <option value="Nevera 4">Nevera 4 (Verduras)</option>
+                        <option value="Nevera 5">Nevera 5 (Gaseosas)</option>
+                        <option value="Nevera 6">Nevera 6 (Agua-Jugo)</option>
+                        <option value="Nevera 7">Nevera 7 (Cervezas)</option>
+                        <option value="Bodega">Bodega</option>
+                        <option value="Cocina">Cocina</option>
+                        <option value="Otros">Otros</option>
+                    </select>
+                </div>
+
+                <div class="casillas">
+                    <div class="celdaid">
+                        <label>Stock Inicial:</label>
+                        <input type="number" id="stockInicialProducto" name="stockInicialProducto" min="0">
+                    </div>
+
+                    <div class="celdaid">
+                        <label>Stock Mínimo:</label>
+                        <input type="number" id="stockMinimoProducto" name="stockMinimoProducto" min="0">
+                    </div>
+                </div>
+
+                <div>
+                    <label>Unidad de Medida:</label>
+                    <select id="unidadMedidaProducto" name="unidadMedidaProducto">
+                        <option value="">Seleccionar unidad de medida</option>
+                        <option value="Unidad">Unidad</option>
+                        <option value="Filete">Filete</option>
+                        <option value="Presa">Presa</option>
+                        <option value="Porcion">Porción</option>
+                        <option value="Kg">Kilogramo</option>
+                        <option value="Botella">Botella</option>
+                        <option value="Litro">Litro</option>
+                        <option value="Paquete">Paquete</option>
+                        <option value="Caja">Caja</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label>Proveedor:</label>
+                    <select id="proveedorProducto" name="proveedorProducto" onfocus="cargarProveedoresInventario()">
+                        <option value="" disabled selected>Seleccionar proveedor</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label>Descripción:</label>
+                    <textarea id="descripcionProducto" name="descripcionProducto" placeholder="Descripción del producto... (máx. 500 caracteres)" maxlength="500" rows="3"></textarea>
+                </div>
+
+                <div>
+                    <label>Estado:</label>
+                    <select id="estadoProducto" name="estadoProducto">
+                        <option value="Activo">Activo</option>
+                        <option value="Inactivo">Inactivo</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="botones_final_column">
+                <button type="submit" class="btn-registrar">Registrar Producto</button>
+                <button type="button" class="btn-cancelar" onclick="cancelarProceso('modalRegistroProducto')">Cancelar</button>
+            </div>
+        </form>
+    </div>  
+</div>
+

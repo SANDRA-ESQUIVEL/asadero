@@ -1,0 +1,97 @@
+<div id="modalMovimientosInventario" class="modalregistro">
+    <div class="modalinventario-content">
+        <span class="close" onclick="cerrarModal('modalMovimientosInventario')">&times;</span>
+        <h2>Movimientos de Inventario</h2>
+
+        <div class="casilla_fecha">
+            <label>Fecha:</label>
+            <input type="text" class="campo-fecha" id="fechaMovimiento" name="fechaMovimiento" readonly>
+        </div>
+
+        <form id="formMovimientoInventario" onsubmit="return registrarMovimiento(event)">
+            <div class="campos-inventario">
+            
+                <div> 
+                    <label>Usuario:</label> 
+                    <input type="text" id="usuarioMovimiento" name="usuarioMovimiento" readonly> 
+                </div>
+
+                <h4>Información del producto</h4>
+                <div>
+                    <label>Producto:</label>
+                    <select id="productoMovimiento" name="productoMovimiento" onchange="autocompletarProductoMovimiento()">
+                        <option value="">Seleccionar producto</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label>Tipo Producto:</label>
+                    <input type="text" id="tipoProductoMovimiento" name="tipoProductoMovimiento" class="select-bloqueado">
+                </div>
+
+                <div>
+                    <label>Categoría:</label>
+                    <input type="text" id="categoriaProductoMovimiento" name="categoriaProductoMovimiento" class="select-bloqueado">
+                </div>
+
+                <div>
+                    <label>Ubicación:</label>
+                    <input type="text" id="ubicacionProductoMovimiento" name="ubicacionProductoMovimiento" class="select-bloqueado">
+                </div>
+
+                <div>
+                    <label>Stock actual:</label>
+                    <input type="number" id="stockActualMovimiento" name="stockActualMovimiento" class="select-bloqueado">
+                </div>
+
+                <h4>Registrar movimiento</h4>
+                <div>
+                    <label>Tipo movimiento:</label>
+                    <select id="tipoMovimiento" name="tipoMovimiento">
+                        <option value="">Seleccionar tipo de movimiento</option>
+                        <option value="ENTRADA">Entrada</option>
+                        <option value="SALIDA">Salida</option>
+                        <option value="AJUSTE">Ajuste</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label>Cantidad:</label>
+                    <input type="number" id="cantidadMovimiento" name="cantidadMovimiento" min="1">
+                </div>
+
+                <div>
+                    <label>Motivo:</label>
+                    <input type="text" id="motivoMovimiento" name="motivoMovimiento">
+                </div>
+            </div>
+
+            <div class="botones_final_column">
+                <button type="submit" class="btn-registrar_movimiento">Registrar Movimiento</button>
+                <button type="button" class="btn-cancelar" onclick="cancelarProceso('modalMovimientosInventario')">Cerrar</button>
+            </div>
+        </form>
+
+
+        <div class="lista-resultados">
+            <table id="tablaMovimientos">
+                <thead>
+                    <tr>
+                        <th>Fecha</th> 
+                        <th>Producto</th> 
+                        <th>Tipo Movimiento</th>
+                        <th>Cantidad</th> 
+                        <th>Stock actual</th> 
+                        <th>Tipo producto</th>
+                        <th>Categoría</th>
+                        <th>Ubicación</th>
+                        <th>Motivo</th> 
+                        <th>Usuario</th>
+                    </tr>
+                </thead>
+                <tbody id="bodyMovimientos"></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

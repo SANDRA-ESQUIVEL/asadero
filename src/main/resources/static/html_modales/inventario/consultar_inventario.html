@@ -1,0 +1,209 @@
+<div id="modalConsultarInventario" class="modalregistro">
+    <div class="modalinventario-content">
+        <span class="close" onclick="cerrarModal('modalConsultarInventario')">&times;</span>
+        <h2>Consultar Inventario</h2>
+
+            <div class="casilla_fecha">
+                <label>Fecha consulta:</label>
+                <input type="text" class="campo-fecha" id="fechaConsultaInventario" name="fechaConsultaInventario" readonly>
+            </div>
+
+        <div class="campos-inventario">
+            <input type="text" id="buscarInventario" name="buscarInventario" placeholder="Buscar por código o nombre...">
+            
+            <select id="filtroTipoInventario" name="filtroTipoInventario">
+                <option value="" disabled selected>Selecciona Tipo de Inventario</option>
+                <option value="">Todos los tipos</option>
+                <option value="Venta">Venta</option>
+                <option value="Insumo">Insumo</option>
+            </select>
+            
+            <select id="filtroCategoriaInventario" name="filtroCategoriaInventario">
+                <option value="" disabled selected>Selecciona Categoria de Inventario</option>
+                <option value="">Todas las categorías</option>
+                <option value="Alimentos">Alimentos</option>
+                <option value="Acompañamientos">Acompañamientos</option>
+                <option value="Bebidas">Bebidas</option>
+                <option value="Desechables">Desechables</option>
+                <option value="Otros">Otros</option>
+            </select>
+
+            <select id="filtroStockInventario" name="filtroStockInventario">
+                <option value="" disabled selected>Selecciona Stock</option>
+                <option value="">Todo</option>
+                <option value="bajo">Stock Bajo</option>
+            </select>
+
+            <div class="botones_inventario">
+                <button type="button" onclick="seleccionarBotonActivo(this, '.botones_inventario button');filtrarInventario();">Filtrar</button>
+                <button type="button" onclick="seleccionarBotonActivo(this, '.botones_inventario button');mostrarTodoInventario();">Todo</button>
+                <button type="button" onclick="seleccionarBotonActivo(this, '.botones_inventario button');mostrarStockBajo();">Stock Bajo</button>
+            </div>
+        </div>
+
+        <div class="lista-resultados">
+            <table id="tablaInventario">
+                <thead>
+                    <tr>    
+                        <th>Código</th>
+                        <th>Producto</th>
+                        <th>Tipo</th>
+                        <th>Categoría</th>
+                        <th>Ubicación</th>
+                        <th>Precio Venta</th>
+                        <th>Stock Actual</th>
+                        <th>Unidad Medida</th>
+                        <th>Stock Mínimo</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="bodyInventario"></tbody>
+            </table>
+        </div>
+
+        <div class="botones_final">
+            <button type="button" class="btn-exportar" onclick="exportarInventarioExcel()">Exportar Excel</button>
+            <button type="button" class="btn-exportar" onclick="exportarInventarioPDF()">Exportar PDF</button>
+            <button type="button" class="btn-cancelar" onclick="cancelarProceso('modalConsultarInventario')">Cerrar</button>
+        </div>
+
+    </div>
+</div>
+
+
+
+<!-- MODAL EDITAR -->
+<div id="modalEditarProducto" class="modalregistro">
+    <div class="modalregistro-content">
+        <span class="close" onclick="cerrarModal('modalEditarProducto')">&times;</span>
+        <h2>Editar Producto</h2>
+
+            <div class="casilla_fecha">
+                <label>Fecha de Modificacíon:</label>
+                <input type="text" class="campo-fecha" id="fechaEditarProducto" name="fechaEditarProducto" readonly>
+            </div>
+
+        <form id="formEditarProducto">
+            <div class="campos-registro">
+                <div>
+                    <label>Código Producto:</label>
+                    <input type="text" id="editarCodigoProducto" name="editarCodigoProducto" class="select-bloqueado" readonly>
+                </div>
+
+                <div>
+                    <label>Nombre Producto:</label>
+                    <input type="text" id="editarNombreProducto" name="editarNombreProducto" placeholder="Nombre producto">
+                </div>
+
+                <div>
+                    <label>Tipo de Producto:</label>
+                    <select id="editarTipoProducto" name="editarTipoProducto">
+                        <option value="" disabled selected>Seleccionar tipo</option>
+                        <option value="Materia Prima">Materia Prima</option>
+                        <option value="Ingrediente">Ingrediente</option>
+                        <option value="Bebida">Bebida</option>
+                        <option value="Desechable">Desechable</option>
+                        <option value="Limpieza">Limpieza</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label>Categoría:</label>
+                    <select id="editarCategoriaProducto" name="editarCategoriaProducto">
+                        <option value="" disabled selected>Seleccionar categoría</option>
+                        <option value="Alimentos">Alimentos</option>
+                        <option value="Acompañamientos">Acompañamientos</option>
+                        <option value="Bebidas">Bebidas</option>
+                        <option value="Salsas">Salsas</option>
+                        <option value="Desechables">Desechables</option>
+                        <option value="Limpieza">Limpieza</option>
+                        <option value="Otros">Otros</option>
+                    </select>
+                </div>
+
+                <div class="casillas">
+                    <div class="celdaid">
+                        <label>Precio Venta:</label>
+                        <input  type="number" id="editarPrecioVentaProducto" name="editarPrecioVentaProducto" step="0.01" min="0" placeholder="0.00">
+                    </div>
+
+                    <div class="celdaid">
+                        <label>Costo Compra:</label>
+                        <input  type="number" id="editarCostoCompraProducto" name="editarCostoCompraProducto" step="0.01" min="0" placeholder="0.00">
+                    </div>
+                </div>
+
+                <div>
+                    <label>Ubicación:</label>
+                    <select id="editarUbicacionProducto" name="editarUbicacionProducto">
+                        <option value="" disabled selected>Seleccionar ubicación</option>
+                        <option value="Nevera 1">Nevera 1 (Pollo)</option>
+                        <option value="Nevera 2">Nevera 2 (Carnes)</option>
+                        <option value="Nevera 3">Nevera 3 (Papas)</option>
+                        <option value="Nevera 4">Nevera 4 (Verduras)</option>
+                        <option value="Nevera 5">Nevera 5 (Gaseosas)</option>
+                        <option value="Nevera 6">Nevera 6 (Agua-Jugo)</option>
+                        <option value="Nevera 7">Nevera 7 (Cervezas)</option>
+                        <option value="Bodega">Bodega</option>
+                        <option value="Cocina">Cocina</option>
+                        <option value="Otros">Otros</option>
+                    </select>
+                </div>
+
+                <div class="casillas">
+                    <div class="celdaid">
+                        <label>Stock Actual:</label>
+                        <input  type="number" id="editarStockProducto" name="editarStockProducto" min="0">
+                    </div>
+
+                    <div class="celdaid">
+                        <label>Stock Mínimo:</label>
+                        <input  type="number" id="editarStockMinimoProducto" name="editarStockMinimoProducto" min="0">
+                    </div>
+                </div>
+
+                <div>
+                    <label>Unidad de Medida:</label>
+                    <select id="editarUnidadMedidaProducto" name="editarUnidadMedidaProducto">
+                        <option value="" disabled selected>Seleccionar unidad</option>
+                        <option value="Unidad">Unidad</option>
+                        <option value="Filete">Filete</option>
+                        <option value="Presa">Presa</option>
+                        <option value="Porcion">Porción</option>
+                        <option value="Kg">Kilogramo</option>
+                        <option value="Botella">Botella</option>
+                        <option value="Litro">Litro</option>
+                        <option value="Paquete">Paquete</option>
+                        <option value="Caja">Caja</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label>Proveedor:</label>
+                    <select id="editarProveedorProducto" name="editarProveedorProducto" onfocus="cargarProveedoresInventarioEditar()">
+                        <option value="" disabled selected>Seleccionar proveedor</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label>Descripción:</label>
+                    <textarea  id="editarDescripcionProducto" name="editarDescripcionProducto" maxlength="500" rows="3" placeholder="Descripción del producto..."></textarea>
+                </div>
+
+                <div>
+                    <label>Estado:</label>
+                    <select id="editarEstadoProducto" name="editarEstadoProducto">
+                        <option value="Activo">Activo</option>
+                        <option value="Inactivo">Inactivo</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="botones_final_column">
+                <button type="button" class="btn-registrar" onclick="actualizarProducto(event)">Guardar Cambios</button>
+                <button type="button" class="btn-cancelar" onclick="cancelarProceso('modalEditarProducto')">Cancelar</button>
+            </div>
+        </form>
+    </div>
+</div>

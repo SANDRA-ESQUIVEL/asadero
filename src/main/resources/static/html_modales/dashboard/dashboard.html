@@ -1,0 +1,54 @@
+<div id="modalDashboard" class="modal">
+    <div class="modalDashboard-content">
+        <span class="close"
+            onclick="cerrarModal('modalDashboard')">&times;</span><br>
+
+            <div  class="casilla_fecha">
+                <label>Fecha:</label>
+                <input type="text" class= "campo-fecha" id="fechaDashboard" name="fechaDashboard" readonly>
+            </div>
+
+        <h2>Dashboard de ventas</h2>
+
+        <div class="dashboard-resumen">
+            <div class="card-dashboard">
+                <h3>Ventas hoy</h3>
+                <p id="ventasHoy">$0</p>
+            </div>
+
+            <div class="card-dashboard">
+                <h3>Pedidos hoy</h3>
+                <p id="pedidosHoy">0</p>
+            </div>
+
+            <div class="card-dashboard">
+                <h3>Pendientes</h3>
+                <p id="pendientesHoy">0</p>
+            </div>
+
+            <div class="card-dashboard">
+                <h3>Canceladas</h3>
+                <p id="canceladasHoy">0</p>
+            </div>
+        </div>
+
+        <div class="dashboard-tabla">
+            <h3>Productos más vendidos</h3>
+
+                <div class="filtro-productos-dashboard">
+                    <button type="button" onclick="seleccionarBotonActivo(this, '.filtro-productos-dashboard button');cargarProductosVendidos('hoy');">Hoy</button>
+                    <button type="button" onclick="seleccionarBotonActivo(this, '.filtro-productos-dashboard button');cargarProductosVendidos('general');">General</button>
+                </div>
+
+            <table id="tablaProductosDashboard">
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Cantidad</th>
+                    </tr>
+                </thead>
+                <tbody id="bodyProductosDashboard"></tbody>
+            </table>
+        </div>
+    </div>
+</div>

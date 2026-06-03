@@ -1,0 +1,64 @@
+<div id="modalDesactivar" class="modales">
+  <div class="modales-content">
+    <span class="close" onclick="cerrarModal('modalDesactivar')">&times;</span><br>
+
+            <div  class="casilla_fecha">
+                <label>Fecha de Desactivación:</label>
+                <input type="text" class= "campo-fecha" id="fechaDesactivacionUsuario1" name="fechaDesactivacionUsuario1" readonly>
+            </div>
+    
+    <h1>Selecciona el usuario que desea Desactivar</h1>
+    
+    <div class="usuarios-lista" id="usuariosListaDesactivar"></div>
+
+    <div class="botones_final">
+        <button type="button" id="btnDesactivarPaso1" class="btn-desactivar" onclick="abrirModalDesactivar()">Desactivar</button>
+        <button type="button" class="btn-cancelar" onclick="cancelarProceso('modalDesactivar')">Cancelar</button>
+    </div>
+  </div>
+</div>
+  
+<div id="modalDesactivar1" class="modales">
+    <div class="modales-content">
+        <span class="close" onclick="cerrarModal('modalDesactivar1')">&times;</span>
+        <h2>Desactivar Usuario</h2>
+
+            <div  class="casilla_fecha">
+                <label>Fecha de Desactivación:</label>
+                <input type="text" class= "campo-fecha" id="fechaDesactivacionUsuario2" name="fechaDesactivacionUsuario2" readonly>
+            </div>
+
+        <form id="seleccionarCampos1" onsubmit="return continuarDesactivacion(event)">
+            <div class="contenedor-campos">
+                <div class="columna-fechas">
+                    <div class="fecha-inicio">
+                        <label for="fechaInicio">Fecha de Inicio de desactivación:</label>
+                        <input type="date" id="fechaInicioDesactivar" name="fechaInicioDesactivar">
+                    </div>
+
+                    <div class="fecha-final">
+                        <label for="fechaFin">Fecha Finalización de desactivación:</label>
+                        <input type="date" id="fechaFinDesactivar" name="fechaFinDesactivar">
+                    </div>
+                </div>
+
+                <div class="campo-desactivar">
+                    <label for="motivoDesactivacion">Motivo de desactivación:</label>
+                    <select id="motivoDesactivacion" name="motivoDesactivacion">
+                        <option value="" disabled selected>Motivo de desactivación</option>
+                        <option value="Vacaciones">Vacaciones</option>
+                        <option value="SolicitudPermiso">Solicitud de Permiso</option>
+                        <option value="Incapacidad">Incapacidad</option>
+                        <option value="Otro">Otro</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <div class="botones_final_column">
+                <button type="submit" id="btnConfirmarDesactivar" class="btn-confirma_desactivacion">Confirmar Desactivación</button>
+                <button type="button" class="btn-cancelar" onclick="cancelarProceso('modalDesactivar1')">Cancelar</button>
+            </div>
+        </form>
+    </div>  
+</div>

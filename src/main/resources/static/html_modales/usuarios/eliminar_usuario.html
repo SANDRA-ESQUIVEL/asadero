@@ -1,0 +1,19 @@
+  <div id="modalEliminar" class="modales">
+    <div class="modales-content">
+      <span class="close" onclick="cerrarModal('modalEliminar')">&times;</span><br>
+        
+          <div class="casilla_fecha">
+              <label>Fecha de Eliminación:</label>
+              <input type="text" class="campo-fecha" id="fechaEliminacionUsuario" name="fechaEliminacionUsuario" readonly>
+          </div>    
+
+      <h1>Selecciona el usuario que desea Eliminar</h1>
+
+      <div class="usuarios-lista" id="usuariosListaEliminar"></div>
+
+      <div class="botones_final">
+        <button type="button" id="btnEliminarPaso1" class="btn-eliminar" onclick="abrirModalEliminar()">Sí, Eliminar</button>
+        <button type="button" class="btn-cancelar" onclick="cancelarProceso('modalEliminar')">Cancelar</button>
+      </div>
+    </div>
+  </div>

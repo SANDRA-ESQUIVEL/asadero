@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Menú Principal - The Broaster House</title>
+        <link rel="stylesheet" href="/css/style_menu.css">
+        <link rel="stylesheet" href="/css/modales/usuarios.css">
+        <link rel="stylesheet" href="/css/modales/inventario.css">
+        <link rel="stylesheet" href="/css/modales/ventas.css">
+        <link rel="stylesheet" href="/css/modales/dashboard.css">
+        <link rel="stylesheet" href="/css/modales_funciones_global.css">
+    </head>
+<body>
+        <div class="titulo_asadero">
+            <h4>The Broaster House - <span class="usuarioSeleccionado"></span></h4>         
+        </div>
+    <header>
+        <div>
+            <img src="/img/logobroasterhouse.png" alt="The Broaster House" class="logo_arriba">
+            <img src="/img/logobroasterhouse.png" alt="The Broaster House" class="logo_arriba">
+            <img src="/img/logobroasterhouse.png" alt="The Broaster House" class="logo_arriba">
+        </div>
+    </header>
+
+    <main>
+        <aside class="sidebar">
+            <div class="user-info">
+                <h3 id="rolUsuario"></h3>
+                <p class="usuarioSeleccionado"></p>
+            </div>
+
+            <div class="menu">
+                <button type="button" class="menu-item" onclick="toggleSubmenu('usuarios')">Gestión de Usuarios</button>
+                <div class="submenu" id="usuarios">
+                    <button type="button" onclick="abrirModalDesdeArchivo('/html_modales/usuarios/crear_usuario.html','modalCrearUsuario1')">Crear Usuario</button>
+                    <button type="button" onclick="abrirModalDesdeArchivo('/html_modales/usuarios/modificar_usuario.html','modalModificar1')">Modificar Usuario</button>                    
+                    <button type="button" onclick="abrirModalDesdeArchivo('/html_modales/usuarios/desactivar_usuario.html','modalDesactivar')">Desactivar Usuario</button>
+                    <button type="button" onclick="abrirModalDesdeArchivo('/html_modales/usuarios/eliminar_usuario.html','modalEliminar')">Eliminar Usuario</button>                    
+                </div>
+
+                <button type="button" class="menu-item" onclick="toggleSubmenu('clientes')">Gestión de Clientes</button>
+                <div class="submenu" id="clientes">
+                    <button type="button" onclick="abrirModalDesdeArchivo('/html_modales/clientes/registrar_cliente.html','modalRegistrarCliente')">Registrar Cliente</button>
+                    <button type="button" onclick="abrirModalDesdeArchivo('/html_modales/clientes/modificar_cliente.html','modalModificarCliente')">Modificar Cliente</button>                    
+                    <button type="button" onclick="abrirModalDesdeArchivo('/html_modales/clientes/desactivar_cliente.html','modalDesactivarCliente')">Desactivar Cliente</button>
+                    <button type="button" onclick="abrirModalDesdeArchivo('/html_modales/clientes/eliminar_cliente.html','modalEliminarCliente')">Eliminar Cliente</button>
+                </div>
+
+                <button type="button" class="menu-item" onclick="toggleSubmenu('proveedores')">Gestión de Proveedores</button>
+                <div class="submenu" id="proveedores">
+                    <button type="button" onclick="abrirModalDesdeArchivo('/html_modales/proveedores/registrar_proveedor.html','modalRegistrarProveedor')">Registrar Proveedor</button>
+                    <button type="button" onclick="abrirModalDesdeArchivo('/html_modales/proveedores/modificar_proveedor.html','modalModificarProveedor')">Modificar Proveedor</button>                    
+                    <button type="button" onclick="abrirModalDesdeArchivo('/html_modales/proveedores/desactivar_proveedor.html','modalDesactivarProveedor')">Desactivar Proveedor</button>                
+                    <button type="button" onclick="abrirModalDesdeArchivo('/html_modales/proveedores/eliminar_proveedor.html','modalEliminarProveedor')">Eliminar Proveedor</button>                    
+                </div>
+
+                <button type="button" class="menu-item" onclick="toggleSubmenu('inventario')">Gestión de Inventario</button>
+                <div class="submenu" id="inventario">
+                    <button type="button" onclick="abrirModalDesdeArchivo('/html_modales/inventario/registro_producto.html','modalRegistroProducto')">Registro de Producto</button>
+                    <button type="button" onclick="abrirModalDesdeArchivo('/html_modales/inventario/consultar_inventario.html','modalConsultarInventario')">Consultar Inventario</button>
+                    <button type="button" onclick="abrirModalDesdeArchivo('/html_modales/inventario/movimientos.html','modalMovimientosInventario')">Movimientos de Inventario</button>
+                    <button type="button" onclick="abrirModalDesdeArchivo('/html_modales/inventario/alertas.html','modalAlertas')">Alertas</button>
+                    <button type="button" onclick="abrirModalDesdeArchivo('/html_modales/inventario/reportes.html','modalReportes')">Reportes</button>
+                </div>
+
+                <button type="button" class="menu-item" onclick="toggleSubmenu('ventas')">Gestión de Ventas</button>
+                <div class="submenu" id="ventas">
+                    <button type="button" onclick="abrirModalDesdeArchivo('/html_modales/ventas/registrar_venta.html','modalRegistrarVenta')">Registrar Venta</button>
+                    <button type="button" onclick="abrirModalDesdeArchivo('/html_modales/ventas/consultar_ventas.html','modalConsultaVentas')">Consultar de Ventas</button>
+                </div>
+                
+                <button type="button" class="menu-item" onclick="abrirDashboard()">Dashboard</button>
+
+                <button type="button" class="menu-item-cerrar" onclick="cerrarSesion()">Cerrar Sesión</button>
+            </div>
+        </aside>
+    </main>
+
+    <div id="contenedorModales"></div>
+
+    <footer>
+        <p>© 2025 Elaborado por Sandra Esquivel - ADSO- 3070230</p>
+    </footer>
+                
+        <script src="/js/modales_funciones_globales.js"></script>
+        <script src="/js/script.menu.js"></script>
+        <script src="/js/usuarios/usuarios.js"></script>
+        <script src="/js/clientes/clientes.js"></script>
+        <script src="/js/proveedores/proveedores.js"></script>
+        <script src="/js/inventario/inventario.js"></script>
+        <script src="/js/ventas/ventas.js"></script> 
+        <script src="/js/dashboard/dashboard.js"></script>  
+        
+        
+        <!--(EXPORTAR EXCEL Y PDF) -->
+        <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
+
+    </body>
+</html>

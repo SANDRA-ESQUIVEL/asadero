@@ -1,0 +1,46 @@
+<div id="modalEliminarProveedor" class="modales">
+    <div class="modales-content">
+        <span class="close" onclick="cerrarModal('modalEliminarProveedor')">&times;</span>
+        <h2>Eliminar Proveedor</h2>
+
+        <div class="casilla_fecha">
+            <label>Fecha de Eliminación:</label>
+            <input type="text" class="campo-fecha" id="fechaEliminacionProveedor" name="fechaEliminacionProveedor" readonly>
+        </div>
+
+        <div class="buscar-section">
+            <input type="text" id="buscarEliminarProveedor" name="buscarEliminarProveedor" class="buscar-input" placeholder="Buscar ID, nombre, razón social, NIT...">
+        </div>
+
+        <div class="botones">
+            <button type="button" onclick="buscarEliminarProveedor()" class="btn-buscar">Buscar Proveedor</button>
+            <button type="button" onclick="mostrarTodosEliminarProveedor()" class="btn-todos">Todos los Proveedores</button>
+        </div>
+
+        <div id="listaEliminarProveedor" class="lista-resultados"></div>
+
+        <div id="confirmacionEliminarProveedor" style="display:none;">
+            <input type="hidden" id="proveedorIdEliminar" name="proveedorIdEliminar">
+            
+            <div id="infoProveedorEliminar" class="info-mensaje">
+                <h4 id="mensajeEliminarProveedor"></h4>
+                <p><strong>Esta acción no se puede deshacer.</strong></p>
+            </div>
+
+            <div class="grupo-motivo">
+                <label>Motivo de eliminación:</label>
+                <select id="motivoEliminarProveedor" name="motivoEliminarProveedor">
+                    <option value="" disabled selected>Seleccionar motivo</option>
+                    <option value="Error">Registro duplicado / error</option>
+                    <option value="Solicitud">Solicitud del proveedor</option>
+                    <option value="Otro">Otro</option>
+                </select>
+            </div>
+            
+            <div class="botones_final">
+                <button type="button" onclick="confirmarEliminarProveedor()" class="btn-eliminar">Sí, Eliminar</button>
+                <button type="button" onclick="cancelarProceso('modalEliminarProveedor','proveedores')" class="btn-cancelar">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>

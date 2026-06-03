@@ -1,0 +1,80 @@
+<div id="modalModificarCliente" class="modalregistro">
+    <div class="modalmodregistro-content">
+        <span class="close" onclick="cerrarModal('modalModificarCliente')">&times;</span>
+        <h2>Modificar Cliente</h2>
+
+            <div class="casilla_fecha">
+                <label>Fecha de Modificación:</label>
+                <input type="text" class="campo-fecha" id="fechaRegistroClienteMod" name="fechaRegistroClienteMod" readonly>
+            </div>
+
+        <div class="buscar-section">
+            <input type="text" id="buscarClienteMod" name="buscarClienteMod" class="buscar-input" placeholder="Buscar por ID, nombres, apellidos, teléfono...">
+        </div>
+
+        <div class="botones">
+            <button type="button" onclick="buscarClienteMod()" class="btn-buscar"> Buscar Cliente</button>
+            <button type="button" onclick="mostrarTodosClientesMod()" class="btn-todos"> Todos los Clientes</button>
+        </div>
+
+        <div id="listaClientesMod" class="lista-resultados"></div>
+
+        <form id="formModificarCliente" style="display:none;" onsubmit="return actualizarCliente(event)">
+            <input type="hidden" id="clienteIdModificar" name="clienteIdModificar">
+
+            <div class="campos-registro">
+                <div>
+                    <label>Id Cliente:</label>
+                    <input type="text" id="id_cliente_mod" name="id_cliente_mod" class="select-bloqueado" readonly>
+                </div>                  
+                
+                <div>
+                    <label>Nombres:</label>
+                    <input type="text" id="nombres_cliente_mod" name="nombres_cliente_mod">
+                </div>
+
+                <div>
+                    <label>Apellidos:</label>
+                    <input type="text" id="apellidos_cliente_mod" name="apellidos_cliente_mod">
+                </div>
+
+                <div class="casillasid">
+                    <div class="seleccionarid">
+                        <label>Tipo documento:</label>
+                        <select id="tipoDocumento_cliente_mod" name="tipoDocumento_cliente_mod" onchange="validarNumeroDocumento(this)">
+                            <option value="CC">Cédula Ciudadanía</option>
+                            <option value="TI">Tarjeta Identidad</option>
+                            <option value="CE">Cédula Extranjería</option>
+                            <option value="PA">Pasaporte</option>
+                        </select>
+                    </div>
+                        
+                    <div class="casillaid">
+                        <label>Número Documento:</label>
+                        <input type="text" id="numeroDocumento_cliente_mod" name="numeroDocumento_cliente_mod" oninput="validarNumeroDocumento(this)" maxlength="30">
+                    </div>
+                </div>
+
+                <div>
+                    <label>Correo:</label>
+                    <input type="email" id="email_cliente_mod" name="email_cliente_mod">
+                </div>
+
+                <div>
+                    <label>Dirección:</label>
+                    <input type="text" id="direccion_cliente_mod" name="direccion_cliente_mod">
+                </div>
+
+                <div>
+                    <label>Teléfono:</label>
+                    <input type="tel" id="telefono_cliente_mod" name="telefono_cliente_mod" oninput="soloNumeros(this)" pattern="[0-9]{10}" maxlength="10">
+                </div>
+            </div>
+
+            <div class="botones_final_column">
+                <button type="submit" class="btn-confirma_Modificacion"> Guardar Cambios</button>
+                <button type="button" class="btn-cancelar" onclick="cancelarProceso('modalModificarCliente', 'clientes')"> Cancelar</button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,43 @@
+<div id="modalAlertas" class="modalregistro">
+    <div class="modalinventario-content">
+        <span class="close" onclick="cerrarModal('modalAlertas')">&times;</span>
+        <h2>Alertas de Inventario</h2>
+
+        <div class="casilla_fecha">
+            <label>Fecha:</label>
+            <input type="text" class="campo-fecha" id="fechaAlertas" name="fechaAlertas" readonly>
+        </div>
+
+        <div id="resumenAlertas">
+            <h3>Productos en Alerta</h3>
+            <p><strong>Total en alerta:</strong> <span id="totalAlertas">0</span></p>
+        </div>
+
+        <div id="listaAlertas" class="lista-resultados">
+            <table id="tablaAlertas">
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Tipo</th>
+                        <th>Categoría</th>
+                        <th>Ubicación</th>
+                        <th>Stock Actual</th>
+                        <th>Stock Mínimo</th>
+                        <th>Estado</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+                <tbody id="bodyAlertas">
+                    <tr>
+                        <td colspan="8">No hay productos en alerta</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="botones_final_column">
+            <button type="button" class="btn-reposicion" onclick="reponerProducto()">Reponer Todo</button>
+            <button type="button" class="btn-cancelar" onclick="cancelarProceso('modalAlertas')">Cerrar</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,45 @@
+<div id="modalDesactivarProveedor" class="modales">
+    <div class="modales-content">
+        <span class="close" onclick="cerrarModal('modalDesactivarProveedor')">&times;</span>
+        <h2>Desactivar Proveedor</h2>
+
+            <div class="casilla_fecha">
+                <label>Fecha de Desactivación:</label>
+                <input type="text" class="campo-fecha" id="fechaDesactivacionProveedor" name="fechaDesactivacionProveedor" readonly>
+            </div>
+
+        <div class="buscar-section">
+            <input type="text" id="buscarDesactivarProveedor" name="buscarDesactivarProveedor" class="buscar-input" placeholder="Buscar ID, nombre, razón social, NIT...">
+        </div>
+
+        <div class="botones">
+            <button type="button" onclick="buscarDesactivarProveedor()" class="btn-buscar">Buscar Proveedor</button>
+            <button type="button" onclick="mostrarTodosDesactivarProveedor()" class="btn-todos">Todos los Proveedores</button>
+        </div>
+
+        <div id="listaDesactivarProveedor" class="lista-resultados"></div>
+
+        <div id="confirmacionDesactivarProveedor" style="display:none;">
+            <input type="hidden" id="proveedorIdDesactivar" name="proveedorIdDesactivar">
+            
+            <div id="infoProveedorDesactivar" class="info-mensaje">
+                <h4 id="mensajeConfirmacionProveedor"></h4>
+            </div>
+
+            <div class="grupo-motivo">
+                <label>Motivo de Desactivación:</label>
+                <select id="motivoDesactivacionProveedor" name="motivoDesactivacionProveedor">
+                    <option value="" disabled selected>Seleccionar motivo</option>
+                    <option value="Inactivo">Proveedor inactivo</option>
+                    <option value="Solicitud">Solicitud del proveedor</option>
+                    <option value="Otro">Otro</option>
+                </select>
+            </div>
+            
+            <div class="botones_final">
+                <button type="button" onclick="confirmarDesactivarProveedor()" class="btn-confirma_desactivacion">Confirmar</button>
+                <button type="button" onclick="cancelarProceso('modalDesactivarProveedor','proveedores')" class="btn-cancelar">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>

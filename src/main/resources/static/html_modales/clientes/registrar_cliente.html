@@ -1,0 +1,68 @@
+<div id="modalRegistrarCliente" class="modalregistro">
+    <div class="modalregistro-content">
+        <span class="close" onclick="cerrarModal('modalRegistrarCliente')">&times;</span>
+        <h2>Registrar Cliente</h2>   
+    
+            <div  class="casilla_fecha">
+                <label>Fecha de Registro:</label>
+                <input type="text" class="campo-fecha" id="fechaRegistroCliente" name="fechaRegistroCliente" readonly>
+            </div>
+            
+        <form id="registroCliente" onsubmit="return registrarCliente(event)">
+            <div class="campos-registro">  
+                <div>
+                    <label>Id Cliente:</label>
+                    <input type="text" id="id_cliente" name="id_cliente" class="select-bloqueado" readonly>
+                </div>                
+                
+                <div>
+                    <label>Nombres:</label>
+                    <input type="text" id="nombres_cliente" name="nombres_cliente">
+                </div>
+
+                <div>
+                    <label>Apellidos:</label>
+                    <input type="text" id="apellidos_cliente" name="apellidos_cliente">
+                </div>
+
+                <div class="casillasid">
+                    <div class="seleccionarid">
+                        <label>Tipo de documento</label>
+                        <select id="tipoDocumento_cliente" name="tipoDocumento_cliente" onchange="validarNumeroDocumento(this)">
+                            <option value="" disabled selected>Seleccione su tipo de documento</option>
+                            <option value="CC">Cédula de Ciudadanía</option>
+                            <option value="TI">Tarjeta de Identidad</option>
+                            <option value="CE">Cédula de Extranjería</option>
+                            <option value="PA">Pasaporte</option>
+                        </select>
+                    </div>   
+                            
+                    <div class="casillaid">    
+                        <label>Número de documento:</label>
+                        <input type="text" id="numeroDocumento_cliente" name="numeroDocumento_cliente" oninput="validarNumeroDocumento(this)" maxlength="30">
+                    </div>
+                </div>
+
+                <div>
+                    <label>Correo electrónico personal:</label>
+                    <input type="email" id="email_cliente" name="email_cliente">
+                </div>
+
+                <div>
+                    <label>Dirección:</label>
+                    <input type="text" id="direccion_cliente" name="direccion_cliente">
+                </div>
+
+                <div>
+                    <label>Teléfono:</label>
+                    <input type="tel" id="telefono_cliente" name="telefono_cliente" oninput="soloNumeros(this)" pattern="[0-9]{10}" maxlength="10">
+                </div>
+            </div>
+        
+            <div class="botones_final_column">
+                <button type="submit" class="btn-registrar">Registrar Cliente</button>
+                <button type="button" class="btn-cancelar" onclick="cancelarProceso('modalRegistrarCliente', 'clientes')">Cancelar</button>
+            </div>
+        </form> 
+    </div>  
+</div>

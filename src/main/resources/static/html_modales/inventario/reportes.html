@@ -1,0 +1,73 @@
+<div id="modalReportes" class="modalregistro">
+    <div class="modalinventario-content">
+        <span class="close" onclick="cerrarModal('modalReportes')">&times;</span>
+        <h2>Reportes de Inventario</h2>
+
+        <div class="casilla_fecha">
+            <label>Fecha:</label>
+            <input type="text" class="campo-fecha" id="fechaReportes" name="fechaReportes" readonly>
+        </div>
+
+        <div class="buscar-section-reporte">
+            <select id="tipoReporte" name="tipoReporte" onchange="generarReporte()">
+                <option value="">Seleccione tipo de reporte</option>
+                <option value="movimientos">Movimientos</option>
+                <option value="stock-bajo">Stock Bajo</option>
+                <option value="consumo">Más Consumidos</option>
+                <option value="valor-inventario">Valor Total</option>
+                <option value="por-tipo">Por Tipo</option>
+                <option value="por-categoria">Por Categoría</option>
+            </select>
+
+            <select id="filtroTipoReporte" name="filtroTipoReporte" style="display:none;">
+                <option value="">Todos los tipos</option>
+                <option value="Materia Prima">Materia Prima</option>
+                <option value="Ingrediente">Ingrediente</option>
+                <option value="Bebida">Bebida</option>
+                <option value="Venta">Venta</option>
+                <option value="Desechable">Desechable</option>
+            </select>
+
+            <select id="filtroCategoriaReporte" name="filtroCategoriaReporte" style="display:none;">
+                <option value="">Todas categorías</option>
+                <option value="Alimentos">Alimentos</option>
+                <option value="Acompañamientos">Acompañamientos</option>
+                <option value="Bebidas">Bebidas</option>
+                <option value="Desechables">Desechables</option>
+            </select>
+
+            <div class="botones_reporte">
+                <button type="button" onclick="seleccionarBotonActivo(this, '.botones_reporte button');generarReporte();">Generar</button>
+                <button type="button" onclick="seleccionarBotonActivo(this, '.botones_reporte button');mostrarTodoReporte()">Limpiar</button>
+            </div>
+
+        </div>
+
+
+        <div class="lista-resultados">
+            <table id="tablaReporte">
+                <thead id="headReporte">
+                    <tr>
+                        <th>Indicador</th>
+                        <th>Detalle</th>
+                        <th>Valor</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+                <tbody id="bodyReporte">
+                    <tr>
+                        <td colspan="4">Seleccione un tipo de reporte</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="botones_final">
+            <button type="button" class="btn-exportar" onclick="exportarReporteExcel()">Excel</button>
+            <button type="button" class="btn-exportar" onclick="exportarReportePDF()">PDF</button>
+            <button type="button" class="btn-registrar" onclick="imprimirReporte()">Imprimir</button>
+            <button type="button" class="btn-cancelar" onclick="cancelarProceso('modalReportes')">Cerrar</button>
+        </div>
+
+    </div>
+</div>

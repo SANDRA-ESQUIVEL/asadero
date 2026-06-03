@@ -1,0 +1,74 @@
+<div id="modalRegistrarProveedor" class="modalregistro">
+    <div class="modalregistro-content">
+        <span class="close" onclick="cerrarModal('modalRegistrarProveedor')">&times;</span>
+        <h2>Registrar Proveedor</h2>   
+        
+            <div  class="casilla_fecha">
+                <label>Fecha de Registro:</label>
+                <input type="text" class="campo-fecha" id="fechaRegistroProveedor" name="fechaRegistroProveedor" readonly>
+            </div>
+        
+        <form id="registroProveedor" onsubmit="return registrarProveedor(event)">
+            <div class="campos-registro">
+                <div>
+                    <label>ID Proveedor:</label>
+                    <input type="text" id="id_proveedor" name="id_proveedor" class="select-bloqueado" readonly>
+                </div>
+
+                <div>
+                    <label>Nombre:</label>
+                    <input type="text" id="nombre_proveedor" name="nombre_proveedor">
+                </div>
+
+                <div>
+                    <label>Tipo de proveedor:</label>
+                    <select id="tipoProveedor" name="tipoProveedor" onchange="toggleRazonSocial('registro')">
+                        <option value="" disabled selected>Seleccione tipo de proveedor</option>
+                        <option value="empresa">Empresa</option>
+                        <option value="persona">Persona natural</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label>Razón Social:</label>
+                    <input type="text" id="razonSocial_proveedor" name="razonSocial_proveedor">
+                </div>
+
+                <div class="casillasid">
+                    <label>Tipo NIT:</label>
+                    <select id="tipoNit_proveedor" name="tipoNit_proveedor">
+                        <option value="" disabled selected>Seleccione</option>
+                        <option value="RUT">RUT</option>
+                        <option value="NIT">NIT</option>
+                        <option value="CE">Cédula Extranjero</option>
+                    </select>
+                </div>
+
+                <div class="casillasid">
+                    <label>NIT:</label>
+                    <input type="text" id="nit_proveedor" name="nit_proveedor" oninput="soloNumeros(this)">
+                </div>
+                    
+                <div>
+                    <label>Teléfono:</label>
+                    <input type="tel" id="telefono_proveedor" name="telefono_proveedor" oninput="soloNumeros(this)" minlength="7" maxlength="15">
+                </div>
+
+                <div>
+                    <label>Dirección:</label>
+                    <input type="text" id="direccion_proveedor" name="direccion_proveedor">
+                </div>
+
+                <div>
+                    <label>Email:</label>
+                    <input type="email" id="email_proveedor" name="email_proveedor">
+                </div>
+            </div>
+
+            <div class="botones_final_column">
+                <button type="submit" class="btn-registrar">Registrar Proveedor</button>
+                <button type="button" class="btn-cancelar" onclick="cancelarProceso('modalRegistrarProveedor')">Cancelar</button>
+            </div>
+        </form> 
+    </div>  
+</div>

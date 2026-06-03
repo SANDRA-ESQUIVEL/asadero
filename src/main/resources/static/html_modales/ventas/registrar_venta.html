@@ -1,0 +1,181 @@
+<div id="modalRegistrarVenta" class="modalregistro">
+    <div class="modalventa-content">
+        <span class="close" onclick="cerrarModal('modalRegistrarVenta')">&times;</span>
+        <h2>Registrar Venta</h2>   
+        
+            <div class="casilla_fecha">
+                <label>Fecha de la venta:</label>
+                <input type="text" class="campo-fecha" id="fechaVentaRegistro" name="fechaVentaRegistro" readonly>
+            </div>
+        
+        <form id="formRegistrarVenta" onsubmit="return registrarVenta(event)">     
+            
+            <div>
+                <h3 class="titulo-detalle-venta">Detalle de venta</h3>
+                <table id="tablaDetalleVenta">
+                    <thead>
+                        <tr>
+                            <th>Producto</th>
+                            <th>Stock</th>
+                            <th>Cantidad</th>
+                            <th>Precio</th>
+                            <th>Subtotal</th>
+                            <th>Eliminar</th>
+                        </tr>
+                    </thead>
+                    <tbody id="bodyDetalleVenta"></tbody>
+                </table>
+
+                <button type="button" class="btn-agregar-producto" onclick="agregarProducto()">+ Agregar Producto</button>
+            </div>
+
+            <div class="total">
+                <label>Total Venta:</label>
+                <input type="text" id="totalVenta" name="totalVenta" readonly value="$0">
+            </div>
+
+            
+            <div class="campos-venta">
+                <div>
+                    <label>Id Venta:</label>
+                    <input type="text" id="id_venta" name="id_venta" class="select-bloqueado" readonly>
+                </div>                
+                
+                <div>
+                    <label>Empleado:</label>
+                    <input type="text" id="empleadoVentaNombre" name="empleadoVentaNombre" readonly>
+                </div>
+
+                <div>
+                    <label>Buscar Cliente:</label>
+                    <input type="text" id="buscarClienteVenta" name="buscarClienteVenta" placeholder="Escribe doc o tel..." oninput="buscarClienteVentaRegistro(this.value)">
+                </div>
+
+                <div>
+                    <label>Nombre:</label>
+                    <input type="text" id="nombreClienteVenta" name="nombreClienteVenta" class="select-bloqueado" readonly>
+                </div>
+
+                <div>
+                    <label>Tipo Documento:</label>
+                    <input type="text" id="tipoDocumentoClienteVenta" name="tipoDocumentoClienteVenta" class="select-bloqueado" readonly>
+                </div>
+
+                <div>
+                    <label>Número Documento:</label>
+                    <input type="text" id="numeroDocumentoClienteVenta" name="numeroDocumentoClienteVenta" class="select-bloqueado" readonly>
+                </div>
+
+                <div>
+                    <label>Correo:</label>
+                    <input type="text" id="correoClienteVenta" name="correoClienteVenta" class="select-bloqueado" readonly>
+                </div>
+
+                <div>
+                    <label>Teléfono:</label>
+                    <input type="text" id="telefonoClienteVenta" name="telefonoClienteVenta" class="select-bloqueado" readonly>
+                </div>
+
+                <div>
+                    <label>Dirección:</label>
+                    <input type="text" id="direccionClienteVenta" name="direccionClienteVenta" class="select-bloqueado" readonly>
+                </div>
+
+                <div>
+                    <label>Tipo de pedido:</label>
+                    <select id="tipoPedidoVenta" name="tipoPedidoVenta" onchange="cambiarTipoPedido()">
+                        <option value="LOCAL">Para consumir en el local</option>
+                        <option value="DOMICILIO">Domicilio</option>
+                        <option value="PARA LLEVAR">Para llevar</option>
+                    </select>
+                </div>
+
+                <div id="campoDireccion" name="campoDireccion"  style="display:none;">
+                    <label>Dirección Entrega:</label>
+                    <input type="text" id="direccionVenta" name="direccionVenta">
+                </div>  
+
+                <div>
+                    <label>Forma de Pago:</label>
+                    <select id="formaPagoVenta" name="formaPagoVenta" onchange="cambiarFormaPagoVenta()">
+                        <option value="" disabled selected>Seleccionar forma de pago</option>
+                        <option value="Efectivo">Efectivo</option>
+                        <option value="Tarjeta">Tarjeta</option>
+                        <option value="Transferencia">Transferencia</option>
+                        <option value="Contra entrega" id="opcionContraEntrega" style="display: none;">Contra entrega</option>
+                    </select>
+                </div>
+
+                <div id="campoPagoEfectivo" style="display:none;">
+                    <div>
+                        <label>Moneda recibida:</label>
+                        <select id="monedaPagoVenta" name="monedaPagoVenta" onchange="cambiarMonedaPago()">
+                            <option value="COP">Pesos colombianos</option>
+                            <option value="USD">Dólares</option>
+                        </select>
+                    </div>
+
+                    <div id="campoTasaDolar" style="display:none;">
+                        <label>Tasa dólar (COP):</label>
+                        <input type="text" id="tasaDolarVenta" name="tasaDolarVenta" placeholder="$4.000" oninput="formatearTasaDolar();calcularCambioVenta()">
+                    </div>
+
+                    <div>
+                        <label>Monto recibido:</label>
+                        <input type="text" id="montoRecibidoVenta" name="montoRecibidoVenta" placeholder="$0" oninput="formatearMontoRecibido();calcularCambioVenta()">
+                    </div>
+
+                    <div>
+                        <label>Cambio:</label>
+                        <input type="text" id="cambioVenta" name="cambioVenta" value="$0" class="select-bloqueado" readonly>
+                    </div>
+                </div>
+
+                <div class="salsasContainer" id="salsasContainer">
+                    <span class="titulo-salsas">Salsas:</span>
+                    <div class="opciones-salsas">
+                        <label class="item-salsa">Tomate:
+                            <input type="checkbox" name="salsa" value="tomate">
+                        </label>
+                        <label class="item-salsa">Blanca:
+                            <input type="checkbox" name="salsa" value="blanca">
+                        </label>
+                        <label class="item-salsa">Miel:
+                            <input type="checkbox" name="salsa" value="miel">
+                        </label>
+                        <label class="item-salsa">Ají:
+                            <input type="checkbox" name="salsa" value="aji">
+                        </label>
+                    </div>
+                </div>
+
+                <div>
+                    <label>Observaciones:</label>
+                    <textarea id="observacionesVenta" name="observacionesVenta" placeholder="Ej: sin salsa, para llevar..."></textarea>
+                </div>
+
+                <div class="incluye">
+                    <span class="titulo-incluye">Incluye:</span>
+                    <div class="opciones-incluye">
+                        <label class="item-incluye">Guantes:
+                            <input type="checkbox" name="guantes" checked>
+                        </label>
+                        <label class="item-incluye">Servilletas:
+                            <input type="checkbox" name="servilletas" checked>
+                        </label>
+                        <label class="item-incluye">Desechables:
+                            <input type="checkbox" name="desechables" checked>
+                        </label>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="botones_final_column">
+                <button type="submit" class="btn-registrar">Registrar Venta</button>
+                <button type="button" class="btn-cancelar" onclick="cancelarProceso('modalRegistrarVenta')">Cancelar</button>
+            </div>
+        </form> 
+    </div>  
+</div>
+

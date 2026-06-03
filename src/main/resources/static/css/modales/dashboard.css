@@ -1,0 +1,198 @@
+/*==================================================================================================================================
+DASHBOARD
+==================================================================================================================================*/
+/*=================================================================
+CONTENT DEL DASHBOARD
+=================================================================*/
+.modalDashboard-content {
+    background-color: #fff;
+    margin: clamp(10px, 3vh, 30px) auto;
+    padding: clamp(16px, 4vw, 40px);
+    border: 4px solid #000;
+    width: min(95%, 1100px);
+    max-height: 90vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    border-radius: 5px;
+}
+/*=================================================================
+TITULO DE DASHBOARD DE VENTAS
+=================================================================*/
+.modalDashboard-content h2 {
+    color: rgb(90, 4, 4) ;
+    font-size: clamp(18px, 3vw, 25px);
+    text-transform: uppercase;
+    margin: clamp(12px, 3vh, 30px);
+}
+/*==================================================================================================================================
+PARTE DE LAS TARJETAS
+==================================================================================================================================*/
+/*=================================================================
+CONTENT DE LAS TARJETAS
+=================================================================*/
+.dashboard-resumen{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(clamp(180px, 22vw, 180px), 1fr));
+    gap: clamp(6px, 3vw, 15px);
+    margin-top: clamp(15px, 4vh, 40px);
+    padding: clamp(12px, 3vw, 30px);
+}
+/*=================================================================
+PARA EL DISEÑO LAS TARJETAS
+=================================================================*/
+.card-dashboard{
+    background: linear-gradient(rgb(190, 203, 247), rgb(138, 165, 254), rgb(252, 192, 255));
+    border-radius: 10px;
+    border: black 3px solid;
+    padding: clamp(12px, 2vw, 18px);
+    box-shadow: 0 2px 8px rgba(0,0,0,.1);
+    text-align: center;
+}
+/*=================================================================
+TUTILOS DE LAS TARJETAS
+=================================================================*/
+.card-dashboard h3 {
+    color: rgb(4, 30, 90);
+    font-size: clamp(14px, 2vw, 18px);
+    text-transform: uppercase;
+    margin-bottom: clamp(8px, 2vh, 10px);
+}
+/*=================================================================
+PARA LOS VALORES DE LAS TARJETAS
+=================================================================*/
+.card-dashboard p{
+    font-size: clamp(18px, 3vw, 22px);
+    font-weight:bold;
+}
+/*==================================================================================================================================
+PARTE DE LA TABLA DE PRODUCTOS MAS VENDIDOS
+==================================================================================================================================*/
+/*=================================================================
+CONTENT DE LA TABLA
+=================================================================*/
+.dashboard-tabla {
+    margin:clamp(20px, 4vh, 40px) clamp(10px, 3vw, 100px);    
+    background: #c8f7f9;
+    border-radius: 10px;
+    padding:clamp(15px, 3vw, 30px) clamp(12px, 4vw, 50px);    
+    border: black 3px solid;
+}
+/*=================================================================
+TUTILO DE LA TABLA
+=================================================================*/
+.dashboard-tabla h3 {
+    margin-bottom: clamp(10px, 2vh, 18px);
+    font-size: clamp(14px, 2vw, 18px);    
+    font-weight: 900;
+    color: rgb(4, 30, 90);
+    text-transform: uppercase;
+}
+/*==================================================================================================================================
+PARA LOS BOTONES DE HOY Y GENERAL
+==================================================================================================================================*/
+/*=================================================================
+CONTENT DE LOS BOTONES
+=================================================================*/
+.filtro-productos-dashboard {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: clamp(8px, 2vw, 12px);
+    margin-bottom: clamp(10px, 2vh, 15px);
+}
+/*=================================================================
+DISEÑO DE LOS BOTONES HOY Y GENERAL
+=================================================================*/
+.filtro-productos-dashboard button {
+    padding:clamp(8px, 2vw, 10px) clamp(12px, 3vw, 16px);    
+    width: clamp(90px, 18vw, 110px);
+    border: 2px solid black;
+    border-radius: 6px;
+    background: #f0f0f0;
+    cursor: pointer;
+    font-size: clamp(13px, 2vw, 15px);
+    font-weight: 500;
+}
+/*=================================================================
+HOVER PARA LOS BOTONES HOY Y GENERAL
+=================================================================*/
+.filtro-productos-dashboard button:hover {
+    background: #5b5a5a;
+    color: white;
+}
+/*==================================================================================================================================
+PARA LOS QUE LOS BOTONES QUE SE SELECCIONEN QUEDEN ACTIVOS (DASHBOARD)
+==================================================================================================================================*/
+/*HOY Y GENERAL*/
+.filtro-productos-dashboard button.btn-activo{
+    background-color: #026f94 !important;
+    color: white !important;
+    border: 4px solid black  !important;
+}
+/*==================================================================================================================================
+LA TABLA PRODUCTOS MAS VENDIDOS
+==================================================================================================================================*/
+/*=================================================================
+CONTENT DE LA TABLA
+=================================================================*/
+#tablaProductosDashboard {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: clamp(15px, 3vh, 30px);
+    text-align: left;
+    font-size: clamp(13px, 2vw, 14px);
+    background-color: white;
+    border-radius: 6px;
+    overflow: hidden;
+}
+/*=================================================================
+ENCABEZADO DE LA TABLA
+=================================================================*/
+#tablaProductosDashboard th {
+    background-color: rgb(4, 30, 90);
+    padding:clamp(10px, 2vw, 20px) clamp(10px, 3vw, 30px);    
+    border-bottom: 2px solid black;
+    color: white;
+    font-size: clamp(13px, 2vw, 16px);
+    font-weight: 900;
+}
+/*=================================================================
+PARA EL BORDE DEL ENCABEZADO DE LA TABLA
+=================================================================*/
+#tablaProductosDashboard thead {
+    border: 3px solid black;
+}
+/*=================================================================
+BODY DE LA TABLA
+=================================================================*/
+#tablaProductosDashboard td {
+    padding: clamp(8px, 2vw, 12px);
+    border-bottom: 1px solid #eee;
+    color: #333;
+}
+/*=================================================================
+BODY DE LA TABLA - SI NO HAY DATOS
+=================================================================*/
+#bodyProductosDashboard:empty::before {
+    content: "No hay productos vendidos";
+    display: block;
+    padding: 15px;
+    color: #777;
+    text-align: center;
+}
+/*=================================================================
+PARA LA COLUMNA CANTIDAD
+=================================================================*/
+#tablaProductosDashboard td:last-child,
+#tablaProductosDashboard th:last-child {
+    text-align: center;
+    width: clamp(80px, 15vw, 120px);
+}
+/*=================================================================
+PARA EL BORDE DEL BODY DE LA TABLA
+=================================================================*/
+#bodyProductosDashboard {
+    border: 3px solid black;
+}

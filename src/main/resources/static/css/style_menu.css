@@ -1,0 +1,206 @@
+/*==================================================================================================================================
+MENU_PRINCIPAL.HTML
+==================================================================================================================================*/
+/*==========================================
+PAGINA MENÚ PRINCIPAL
+==========================================*/
+/*Toda la pagina del menu principal*/
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: Arial, sans-serif;
+    background-color: white;
+    min-height: 100vh;
+    line-height: 1.6;
+    font-size: clamp(14px, 1.5vw, 18px);
+}
+
+/*==================================================================================================================================
+TITÚLO DE INICIO DE LA PAGINA
+==================================================================================================================================*/
+/*Nombre del asadero en la parte de arriba y nombre del usuario*/
+.titulo_asadero {
+    border: 4px solid black;
+    width: 100%;
+    padding: clamp(8px, 2vh, 14px);
+    font-size: clamp(16px, 2.5vw, 25px);
+    background-color: rgb(139, 2, 2);
+    color: white;
+    text-align: left;
+    font-weight: 600;
+}
+
+/*==================================================================================================================================
+PARTE DEL LOGO
+==================================================================================================================================*/
+/*header dimensiones para que las imagenes del logo queden en fila y unidas*/
+header div {
+    border-bottom:4px solid black;
+    display: flex;
+    flex-wrap: nowrap; 
+    justify-content: center;
+    align-items: center;
+    gap: clamp(5px, 2vw, 20px);
+    width: 100%;
+    overflow-x: auto;
+}
+/*medidas de las tres imagenes del logotipo*/
+.logo_arriba {
+    max-width: clamp(300px, 40vw, 600px);
+    max-height: clamp(120px, 25vh, 200px);
+    width: auto;
+    height: auto;
+    flex: 1 ;
+    min-width: 250px;
+}
+
+
+/*==================================================================================================================================
+TODO LO QUE VA DESPUES DEL LOGO Y ANTES DEL FOOTER
+==================================================================================================================================*/
+/*main: todo lo que va despues de las imagenes del logo y antes del footer*/
+main {
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 100vh;
+    padding: clamp(8px, 2vw, 20px);
+    gap: clamp(10px, 2vw, 25px);
+}
+/*==========================================
+PARTE DE LA CAJA GRANDE
+==========================================*/
+/*caja donde se encuentran las opciones*/
+.sidebar {
+    width: clamp(220px, 25vw, 320px);
+    height: fit-content;
+    border: 4px solid black;
+    padding: clamp(12px, 2vw, 20px);
+    font-size: clamp(16px, 2vw, 22px);
+    border-radius: 12px;
+    background: white;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+/*==================================================================================================================================
+CAJA PEQUEÑA DONDE SE VE ROL Y USUARIO
+==================================================================================================================================*/
+/*caja donde se encuentra el Rol y el nombre del usuario*/
+.user-info {
+    text-align: center;
+    border: 4px solid black;
+    padding: clamp(10px, 2vw, 16px);
+    margin-bottom: clamp(12px, 3vh, 20px);
+    font-weight: bold;
+    border-radius: 10px;
+    background: white;
+    font-size: clamp(14px, 2vw, 18px);
+}
+/* tamaño de letra para el Rol */
+.user-info h3 {
+    font-size: clamp(16px, 3vw, 20px);
+    margin-bottom: 0px;
+}
+/* tamaño de letra para el Usuario */
+.user-info p {
+    font-size: clamp(16px, 3vw, 20px); 
+}
+
+/*==================================================================================================================================
+BOTONES DE LAS OPCIONES (GESTION: USUARIO, CLIENTES, PROVEEDORES, VENTAS E INVENTARIO)
+==================================================================================================================================*/
+/*items del menú: celdas de las opciones*/
+.menu-item {
+    display: block;
+    width: 100%;
+    min-height: clamp(40px, 6vh, 55px);
+    padding: clamp(10px, 1.5vw, 16px);
+    margin-bottom: 8px;
+    text-align: left;
+    background-color: white;
+    border: 3px solid black;
+    border-radius: 10px;
+    font-size: clamp(14px, 2vw, 20px);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+/*hover: para las celdas de las opciones*/
+.menu-item:hover {
+    background-color: rgba(20, 1, 124, 0.993);
+    color: white ;
+    transform: translateX(5px);
+    box-shadow: 6px 6px 20px rgba(0, 0, 0, 0.4); /* Más sombra al pasar el mouse */
+}
+/*boton cerrar*/
+.menu-item-cerrar {
+    width: 100%;
+    height: 50px;
+    padding: 8px;
+    background-color: rgb(139, 2, 2) !important;
+    color: white !important;
+    border: 3px solid black;
+    font-size: 20px;
+    text-align: center !important;    
+    font-weight: bold !important;
+    cursor: pointer;
+    margin-bottom: 5px;
+}
+/*hover para el boton cerrar*/
+.menu-item-cerrar:hover {
+    background-color: white !important;
+    color: rgb(139, 2, 2) !important;
+    transform: translateX(5px);
+    box-shadow: 5px 5px 12px rgba(0, 0, 0, 0.4); /* Más sombra al pasar el mouse */
+}
+
+/*==================================================================================================================================
+TODAS LAS OPCIONES QUE APARECEN DENTRO DE CADA UNO DE LOS BOTONES (GESTION: USUARIO, CLIENTES, PROVEEDORES, VENTAS E INVENTARIO)
+==================================================================================================================================*/
+/*==========================================
+SUBMENUS
+==========================================*/
+/*medidas de las cajas de las opciones de despliegue*/
+.submenu {
+    display: none;
+    padding: 12px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.8);
+}
+/*opciones de despliegue de cada gestión: para los botones*/
+.submenu button {
+    display: block;
+    width: 100%;
+    padding: clamp(12px, 3vh, 16px);
+    margin-bottom: 2px;
+    text-align: left;
+    font-size: clamp(15px, 2.8vw, 18px);
+    font-weight: bold;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+    color: #333;
+    transition: all 0.3s ease;
+}
+/*hover para los botones o las opciones de despliegue*/
+.submenu button:hover {
+    background-color: #3da6fc;
+    transform: translateX(8px);
+}
+
+/*==================================================================================================================================
+PIE DE PAGÍNA
+==================================================================================================================================*/
+footer {
+    border-top: 3px solid black;
+    padding: clamp(10px, 2vh, 20px);
+    font-size: clamp(12px, 1.8vw, 16px);
+    font-weight: bold;
+    text-align: center;
+    background-color: burlywood;
+    margin-top: auto;
+}
+
