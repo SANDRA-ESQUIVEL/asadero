@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: asadero
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/asadero_db
+    username: root
+    password: "Lamujer,en1996."
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+    show-sql: true
+
+    properties:
+      hibernate:
+        format_sql: true
+
+server:
+  port: 8080
