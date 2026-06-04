@@ -32,7 +32,7 @@ function obtenerFechaLocal() {
 //==================================================================================================================================
 function cargarDashboard() {
     
-    fetch('http://localhost:8080/api/ventas')
+    fetch('/api/ventas')
     .then(response => response.json())
     .then(ventas => {
         ventasDashboard = ventas;

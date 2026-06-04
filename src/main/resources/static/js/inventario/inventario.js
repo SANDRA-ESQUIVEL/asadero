@@ -491,7 +491,7 @@ function registrarProducto(event) {
     };
 
     fetch(
-        'http://localhost:8080/api/productos',
+        '/api/productos',
         {
             method: 'POST',
 
@@ -584,7 +584,7 @@ function mostrarTodoInventario() {
 
 function cargarProductosDesdeBackend() {
 
-    fetch('http://localhost:8080/api/productos')
+    fetch('/api/productos')
 
         .then(response => response.json())
 
@@ -896,7 +896,7 @@ function actualizarProducto(event) {
     };
 
     fetch(
-        `http://localhost:8080/api/productos/${codigo}`,
+        `/api/productos/${codigo}`,
         {
             method: 'PUT',
 
@@ -980,7 +980,7 @@ function eliminarProducto(codigo) {
     if (!confirmar) return;
 
     fetch(
-        `http://localhost:8080/api/productos/${codigo}`,
+        `/api/productos/${codigo}`,
         {
             method: 'DELETE'
         }
@@ -1210,7 +1210,7 @@ function cargarMovimientosDesdeBackend() {
     );
 
     fetch(
-        'http://localhost:8080/api/movimientos'
+        '/api/movimientos'
     )
     .then(response => {
 
@@ -1332,7 +1332,7 @@ function registrarMovimiento(event) {
     productos[indexProducto].stock = nuevoStock;
 
     fetch(
-        `http://localhost:8080/api/productos/${producto.codigo}/stock`,
+        `/api/productos/${producto.codigo}/stock`,
         {
             method: 'PUT',
             headers: {
@@ -1389,7 +1389,7 @@ function registrarMovimiento(event) {
         };
 
         return fetch(
-            'http://localhost:8080/api/movimientos',
+            '/api/movimientos',
             {
                 method: 'POST',
                 headers: {

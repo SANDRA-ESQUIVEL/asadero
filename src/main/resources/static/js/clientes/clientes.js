@@ -33,7 +33,7 @@ function mapearClienteBackend(cliente) {
 // CARGAR CLIENTES DESDE SPRING
 //=================================================================
 function cargarClientesBackend() {
-    fetch('http://localhost:8080/api/clientes')
+    fetch('/api/clientes')
     .then(response => response.json())
     .then(data => {
         clientes = data.map(mapearClienteBackend);
@@ -90,7 +90,7 @@ function registrarCliente(event) {
         telefono: document.getElementById('telefono_cliente').value
     };
 
-    fetch('http://localhost:8080/api/clientes', {
+    fetch('/api/clientes', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -240,7 +240,7 @@ function actualizarCliente(event) {
 
     const idCliente = document.getElementById('clienteIdModificar').value;
 
-    fetch(`http://localhost:8080/api/clientes/${idCliente}`, {
+    fetch(`/api/clientes/${idCliente}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
@@ -370,7 +370,7 @@ function confirmarDesactivarCliente() {
     
     const nuevoEstado = cliente.estado === 'Activo' ? false : true;
 
-    fetch(`http://localhost:8080/api/clientes/${idCliente}/estado`, {
+    fetch(`/api/clientes/${idCliente}/estado`, {
         method: 'PATCH',
         headers: {
             'Content-Type': 'application/json'
@@ -492,7 +492,7 @@ function confirmarEliminarCliente() {
 
     const idCliente = document.getElementById('clienteIdEliminar').value;
 
-    fetch(`http://localhost:8080/api/clientes/${idCliente}`, {
+    fetch(`/api/clientes/${idCliente}`, {
         method: 'DELETE'
     })
     .then(() => {
@@ -513,22 +513,3 @@ function confirmarEliminarCliente() {
 document.addEventListener('DOMContentLoaded', function() {
     cargarClientesBackend();
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

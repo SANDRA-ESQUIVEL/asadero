@@ -93,7 +93,7 @@ function acceso() {
     const idEmpleado = document.getElementById("idEmpleado").value;
     const password = document.getElementById("password").value;
     
-    fetch(`http://localhost:8080/api/usuarios/login/${idEmpleado}/${password}`)
+    fetch(`/api/usuarios/login/${idEmpleado}/${password}`)
     .then(res => res.json())
     .then(usuario => {
         if (usuario) {
@@ -122,7 +122,7 @@ function reponer() {
     
     if (!idEmpleado) return;
     
-    fetch(`http://localhost:8080/api/recuperar/${idEmpleado}`)
+    fetch(`/api/recuperar/${idEmpleado}`)
     .then(response => {
         if (!response.ok) {
             throw new Error("Usuario no encontrado");
@@ -153,3 +153,4 @@ function limpiarSesion() {
     localStorage.clear();
     alert("Sesión limpiada. Recarga la página principal.");
 }
+

@@ -33,7 +33,7 @@ function mapearProveedorBackend(proveedor) {
 // CARGAR PROVEEDORES DESDE SPRING
 //=================================================================
 function cargarProveedoresBackend() {
-    fetch('http://localhost:8080/api/proveedores')
+    fetch('/api/proveedores')
     .then(response => response.json())
     .then(data => {
         proveedores = data.map(mapearProveedorBackend);
@@ -109,7 +109,7 @@ function registrarProveedor(event) {
         email: document.getElementById('email_proveedor').value.toLowerCase().trim()      
     };
 
-    fetch('http://localhost:8080/api/proveedores', {
+    fetch('/api/proveedores', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(nuevoProveedor)
@@ -216,7 +216,7 @@ function actualizarProveedor(event) {
 
     const id = document.getElementById('proveedorIdModificar').value;
 
-    fetch(`http://localhost:8080/api/proveedores/${id}`, {
+    fetch(`/api/proveedores/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(proveedorActualizado)
@@ -296,7 +296,7 @@ function confirmarDesactivarProveedor() {
     const id = document.getElementById('proveedorIdDesactivar').value;
     const proveedor = estadoProveedores.seleccionadoDesactivar;
     const nuevoEstado = proveedor.estado === 'Activo' ? false : true;
-    fetch(`http://localhost:8080/api/proveedores/${id}/estado`, {
+    fetch(`/api/proveedores/${id}/estado`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ activo: nuevoEstado })
@@ -362,7 +362,7 @@ function seleccionarProveedorEliminar(event, idProveedor) {
 //=================================================================
 function confirmarEliminarProveedor() {
     const id = document.getElementById('proveedorIdEliminar').value;
-    fetch(`http://localhost:8080/api/proveedores/${id}`, { method: 'DELETE' })
+    fetch(`/api/proveedores/${id}`, { method: 'DELETE' })
     .then(() => {
         cargarProveedoresBackend();
         alert('Proveedor eliminado');

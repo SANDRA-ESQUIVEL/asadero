@@ -56,7 +56,7 @@ function mapearUsuarioBackend(usuario) {
 function cargarUsuariosBackend() {
 
     fetch(
-        'http://localhost:8080/api/usuarios'
+        '/api/usuarios'
     )
 
     .then(response =>
@@ -294,7 +294,7 @@ function finalizarProceso(formId, modalActual) {
     };
 
     fetch(
-        'http://localhost:8080/api/usuarios',
+        '/api/usuarios',
         {
             method: 'POST',
 
@@ -668,7 +668,7 @@ function finalizarProcesoActualizarUsuario(formId, modalActual) {
     console.log('✅ Usuario Modificado:',datosModificacionTemporal);
 
     fetch(
-        `http://localhost:8080/api/usuarios/${datosModificacionTemporal.id}`,
+        `/api/usuarios/${datosModificacionTemporal.id}`,
         {
             method: 'PUT',
 
@@ -802,7 +802,7 @@ function seleccionarUsuarioDesactivar(event, idUsuario, estadoActual) {
         usuario.estado = 'Activo';
         
         fetch(
-            `http://localhost:8080/api/usuarios/${usuario.id}/estado`,
+            `/api/usuarios/${usuario.id}/estado`,
             {
                 method: 'PATCH',
                 headers: {
@@ -924,7 +924,7 @@ function continuarDesactivacion(event) {
     }
 
 fetch(
-    `http://localhost:8080/api/usuarios/${usuario.id}/estado`,
+    `/api/usuarios/${usuario.id}/estado`,
     {
         method: 'PATCH',
 
@@ -1058,7 +1058,7 @@ function abrirModalEliminar() {
     if (confirm(`¿Eliminar permanentemente a ${usuario.nombre}?`)) {
 
     fetch(
-        `http://localhost:8080/api/usuarios/${usuario.id}`,
+        `/api/usuarios/${usuario.id}`,
         {
             method: 'DELETE'
         }
@@ -1102,3 +1102,4 @@ document.addEventListener(
 
     }
 );
+

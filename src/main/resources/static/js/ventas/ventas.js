@@ -16,7 +16,7 @@ let ventasBackend = [];
 //=================================================================
 function cargarVentasDesdeBackend() {
     console.log('📥 Cargando ventas desde backend...');
-    fetch('http://localhost:8080/api/ventas')
+    fetch('/api/ventas')
     .then(response => response.json())
     .then(data => {
         ventasBackend = data;
@@ -599,7 +599,7 @@ function registrarVenta(event) {
     console.log('🧾 NUEVA VENTA:', nuevaVenta);
 
     // Guardar en backend
-    fetch('http://localhost:8080/api/ventas', {
+    fetch('/api/ventas', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(nuevaVenta)
@@ -657,7 +657,7 @@ function actualizarStockBackend(filas) {
         const producto = productos.find(p => p.codigo === codigoProducto);
         if (producto) {
             const nuevoStock = producto.stock;
-            fetch(`http://localhost:8080/api/productos/${codigoProducto}/stock`, {
+            fetch(`/api/productos/${codigoProducto}/stock`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ stockInicial: nuevoStock })
@@ -837,7 +837,7 @@ function renderizarVentas(listaVentas = ventas) {
 //MARCAR VENTA PAGADA
 //=================================================================
 function marcarVentaPagada(idVenta) {
-    fetch(`http://localhost:8080/api/ventas/${idVenta}/estado`, {
+    fetch(`/api/ventas/${idVenta}/estado`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ estadoPago: 'PAGADO' })
@@ -861,7 +861,7 @@ function marcarPedidoEntregado(idVenta) {
     const estadoPedido = venta.formaPago === 'Contra entrega' ? 'ENTREGADO' : 'ENTREGADO';
     const estadoPago = venta.formaPago === 'Contra entrega' ? 'PAGADO' : venta.estadoPago;
 
-    fetch(`http://localhost:8080/api/ventas/${idVenta}/estado`, {
+    fetch(`/api/ventas/${idVenta}/estado`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ estadoPedido: estadoPedido, estadoPago: estadoPago })
@@ -876,7 +876,7 @@ function marcarPedidoEntregado(idVenta) {
 //CANCELAR VENTA
 //=================================================================
 function cancelarVenta(idVenta) {
-    fetch(`http://localhost:8080/api/ventas/${idVenta}/estado`, {
+    fetch(`/api/ventas/${idVenta}/estado`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ estadoPago: 'CANCELADO', estadoPedido: 'CANCELADO' })
